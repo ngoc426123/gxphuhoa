@@ -108,7 +108,7 @@ function formCallBackPrayForUs($post) {
                 class="prayforus-form-control"
                 value="<?php echo $wpcf_value["wpcf-pray-for-us-ID"]?>"
                 autocomplete="off"
-                disabled="disabled"
+                readonly
               >
               <span class="prayforus-form-note --red">ID được lưu trong hệ thống - phần này không chỉnh sửa được</span>
             </div>

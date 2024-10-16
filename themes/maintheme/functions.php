@@ -256,6 +256,16 @@ class api_gxphuhoa {
       'methods' => 'POST',
       'callback' => array($this, 'get_gallery_author_user'),
     ));
+
+    register_rest_route('apigxphuhoa', '/pray-for-us/(?P<month>\d+)', array(
+      'methods' => 'GET',
+      'callback' => array($this, 'get_pray_for_us_on_month'),
+    ));
+
+    register_rest_route('apigxphuhoa', '/pray-for-us/(?P<day>\d+)/(?P<month>\d+)', array(
+      'methods' => 'GET',
+      'callback' => array($this, 'get_pray_for_us_on_day_month'),
+    ));
   }
 
   public function get_posts ($request) {
@@ -272,8 +282,6 @@ class api_gxphuhoa {
     );
     $the_query = new WP_Query($args);
     $resultQuery = $the_query->posts;
-
-    // print_r($resultQuery);
 
     foreach ($resultQuery as $value) {
       $img = '';
@@ -368,6 +376,77 @@ class api_gxphuhoa {
     ];
 
     return new WP_REST_Response($data, 200);
+  }
+
+  public function get_pray_for_us_on_month($request) {
+    $month = $request->get_param('month');
+    $args = array(
+      'post_type'  => 'pray-for-us',
+      'order'      => 'DESC',
+      'orderby'    => 'date',
+      'meta_query' => [
+        [
+          'key'     => 'wpcf-pray-for-us-yearofdead',
+          'value'   => '^[0-9]{2}\/'.$month.'/[0-9]{4}',
+          'compare' => 'REGEXP'
+        ]
+      ]
+    );
+    $the_query = new WP_Query($args);
+    $resultQuery = $the_query->posts;
+
+    foreach ($resultQuery as $key => $value) {
+      $ID = $value->ID;
+
+      $resultQuery[$key]->img = get_the_post_thumbnail_url($ID);
+      $resultQuery[$key]->prayID = get_post_meta( $ID, 'wpcf-pray-for-us-ID', true);
+      $resultQuery[$key]->yearBirth = get_post_meta( $ID, 'wpcf-pray-for-us-yearofbirth', true);
+      $resultQuery[$key]->yearDead = get_post_meta( $ID, 'wpcf-pray-for-us-yearofdead', true);
+      $resultQuery[$key]->shelf = get_post_meta( $ID, 'wpcf-pray-for-us-shelf', true);
+      $resultQuery[$key]->row = get_post_meta( $ID, 'wpcf-pray-for-us-row', true);
+      $resultQuery[$key]->number = get_post_meta( $ID, 'wpcf-pray-for-us-number', true);
+    }
+
+    return new WP_REST_Response($resultQuery, 200);
+  }
+
+  public function get_pray_for_us_on_day_month($request) {
+    $day = $request->get_param('day');
+    $month = $request->get_param('month');
+    $args = array(
+      'post_type'  => 'pray-for-us',
+      'order'      => 'DESC',
+      'orderby'    => 'date',
+      'meta_query' => [
+        'relation' => 'AND',
+        [
+          'key'     => 'wpcf-pray-for-us-yearofdead',
+          'value'   => '^[0-9]{2}\/'.$month.'/[0-9]{4}',
+          'compare' => 'REGEXP'
+        ],
+        [
+          'key'     => 'wpcf-pray-for-us-yearofdead',
+          'value'   => $day.'/'.$month.'/[0-9]{4}',
+          'compare' => 'REGEXP'
+        ]
+      ]
+    );
+    $the_query = new WP_Query($args);
+    $resultQuery = $the_query->posts;
+
+    foreach ($resultQuery as $key => $value) {
+      $ID = $value->ID;
+
+      $resultQuery[$key]->img = get_the_post_thumbnail_url($ID);
+      $resultQuery[$key]->prayID = get_post_meta( $ID, 'wpcf-pray-for-us-ID', true);
+      $resultQuery[$key]->yearBirth = get_post_meta( $ID, 'wpcf-pray-for-us-yearofbirth', true);
+      $resultQuery[$key]->yearDead = get_post_meta( $ID, 'wpcf-pray-for-us-yearofdead', true);
+      $resultQuery[$key]->shelf = get_post_meta( $ID, 'wpcf-pray-for-us-shelf', true);
+      $resultQuery[$key]->row = get_post_meta( $ID, 'wpcf-pray-for-us-row', true);
+      $resultQuery[$key]->number = get_post_meta( $ID, 'wpcf-pray-for-us-number', true);
+    }
+
+    return new WP_REST_Response($resultQuery, 200);
   }
 }
 

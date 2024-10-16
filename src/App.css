@@ -1,0 +1,44 @@
+.App-pray-for-us {
+  padding: 50px 0 25px;
+}
+
+.App-title {
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 700;
+  color: #860b76;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.App-desc {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.App-date-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.App-date-info {
+  display: block;
+}
+
+.App-date-info__year {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+.App-date-info__month {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 300;
+}

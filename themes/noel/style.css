@@ -1,0 +1,118 @@
+/*
+Theme Name: Theme Noel
+Theme URI: http: //gxphuhoa.org
+Description: Day la child theme
+Author: HoÃƒÂ ng Minh NgÃ¡Â»Âc
+Author URI: http: //gxphuhoa.org
+Template: maintheme
+Version: 0.1
+*/
+:root {
+	--main: #c91539;
+	--light: #f00d3a;
+	--dark: #7c192d;
+}
+
+#gx-container {
+	background-color: var(--dark);
+	position: relative;
+}
+
+#gx-container:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(images/bg.png);
+	pointer-events: none;
+}
+
+#headBanner {
+	margin: 0;
+	background: var(--dark);
+	background: linear-gradient(0deg, var(--dark) 15%, var(--light) 125%);
+}
+
+#headBanner .wrapper,
+#gx-header .wrapper {
+	padding: 0;
+	background-color: transparent;
+}
+
+#gx-header {
+	margin-bottom: 0;
+	position: relative;
+}
+
+#headMenu {
+	position: relative;
+}
+
+#headMenu:before {
+	content: "";
+	width: calc(100% + 18px);
+	height: 82px;
+	position: absolute;
+	top: -42px;
+	left: -11px;
+	background: url(images/menu-snow-cap.png) no-repeat center top;
+	background-size: 100% auto;
+	z-index: 2;
+	pointer-events: none;
+}
+
+#headMenu a {
+	padding-top: 20px;
+}
+
+#gx-content {
+	position: relative;
+}
+
+.boxNewsHome .titleHome {
+	color: var(--dark);
+	background: url(images/bg-icon-1.png) no-repeat bottom right;
+}
+
+.boxSidebar .title {
+	color: var(--dark);
+	background: url(images/bg-icon-2.png) no-repeat top right;
+}
+
+.boxSidebar .title:before,
+.boxSidebar .title li a {
+	color: var(--dark);
+}
+
+#gx-footer {
+	position: relative;
+}
+
+#footerMain {
+	padding: 80px 0 90px;
+	background: url(images/bg_footer.png) #000;
+}
+
+@media screen and (max-width: 991px) {
+	#gx-header {
+		margin-top: 30px;
+		margin-bottom: 40px;
+		position: relative;
+	}
+
+	#gx-header:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 100%;
+		right: 0;
+		height: 30px;
+		background-color: var(--dark);
+	}
+
+	#gx-content {
+		padding-top: 10px;
+	}
+}

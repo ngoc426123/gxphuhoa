@@ -1,0 +1,67 @@
+.prayforus-form-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.prayforus-form-label {
+  width: 100px;
+  padding-top: 5px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.prayforus-form-input {
+  width: 100%;
+}
+
+.prayforus-form-control {
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.prayforus-form-control:disabled {
+  background-color: #f5f5f5;
+}
+
+.prayforus-form-note {
+  display: block;
+  font-size: 12px;
+  color: #919191;
+  font-style: italic;
+}
+
+.prayforus-form-note.--red {
+  color: rgb(143, 0, 0);
+}
+
+.column-prayforus-image {
+  width: 120px;
+}
+
+.prayforus-thumbnail {
+  width: 80px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top; 
+}
+
+.prayforus-box {
+  padding: 15px 0;
+}
+
+.prayforus-box * {
+  box-sizing: border-box;
+}
+
+.prayforus-row {
+  display: flex;
+  align-items: stretch;
+  margin: 0 -15px;
+  flex-wrap: wrap;
+}
+
+.prayforus-col {
+  width: 50%;
+  padding: 0 15px;
+}

@@ -1,0 +1,47 @@
+/*
+Theme Name: Theme Tết 2024
+Theme URI: http: //gxphuhoa.org
+Description: Day la child theme
+Author: Hoàng Minh Ngọc
+Author URI: http: //gxphuhoa.org
+Template: maintheme
+Version: 0.1
+*/
+
+:root {
+  --main: #cc3619;
+  --light: #e55033;
+  --dark: #a11a0b;
+}
+
+#gx-container {
+  background: #fff5f5;
+}
+
+.boxNewsHome .titleHome {
+  background-image: url(images/bg-box-title.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: auto 100%;
+}
+
+.boxSidebar .title {
+  background-color: var(--main);
+  border-top: var(--dark);
+  color: #fff;
+}
+
+.boxSidebar .title li a {
+  color: #fff;
+}
+
+.faqHome,
+.audioHome {
+  background-image: url(images/bg-pattern.png);
+}
+
+#footerMain {
+  background-image: url(images/bg-footer.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

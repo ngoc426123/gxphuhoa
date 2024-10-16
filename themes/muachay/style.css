@@ -1,0 +1,15 @@
+/*
+Theme Name: Theme Mùa Chay
+Theme URI: http: //gxphuhoa.org
+Description: Day la child theme
+Author: Hoàng Minh Ngọc
+Author URI: http: //gxphuhoa.org
+Template: maintheme
+Version: 0.1
+*/
+
+:root {
+  --main: #47065d;
+  --light: #640d81;
+  --dark: #3b0551;
+}

@@ -1,0 +1,11 @@
+mixin newsInner(item)
+  .newsInner(class=[item.isV2 && 'v2'])
+    .img
+      +link(item.title, item.link)(style={'background-image': 'url('+item.img+')'})
+    .caption
+      if item.cat
+        .cat!=item.cat
+      .tend
+        if item.date
+          .date!=item.date
+        !=item.title

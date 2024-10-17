@@ -20,7 +20,8 @@ function App() {
   return (
     <div className="App-pray-for-us">
       <div className='App-info'>
-        <div className='App-title'>Xin cầu cho các linh hồn</div>
+        <div className='App-sub-title'>Giáo Xứ Phú Hoà</div>
+        <div className='App-title'>Nhà chờ phục sinh</div>
         <div className='App-desc'>"Chính lúc chết đi là khi vui sống muôn đời."</div>
         <div className='App-control-view'>
           <button className={view === 1 ? '--active' : '' } onClick={() => setView(1)}>

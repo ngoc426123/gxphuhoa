@@ -1,6 +1,7 @@
 {
   "name": "app-gx",
   "version": "0.1.0",
+  "homepage": "/wp-content/themes/maintheme/nha-cho-phuc-sinh",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

@@ -1,14 +1,5 @@
 .App-pray-for-us {
-  padding: 100px 40px 200px;
-  background-image: 
-    url(./assets/images/coner-top-left.svg),
-    url(./assets/images/coner-top-right.svg),
-    url(./assets/images/coner-bottom-right.svg),
-    url(./assets/images/coner-bottom-left.svg);
-  background-position: top left, top right, bottom right, bottom left;
-  background-repeat: no-repeat;
-  background-size: 200px;
-  border: solid 10px #000000
+  padding: 50px 0 40px;
 }
 
 .App-pray-for-us img {
@@ -19,9 +10,17 @@
   margin-bottom: 60px;
 }
 
+.App-sub-title {
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 300;
+  text-align: center;
+}
+
 .App-title {
-  font-size: 35px;
-  line-height: 43px;
+  margin-bottom: 10px;
+  font-size: 45px;
+  line-height: 55px;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
@@ -112,13 +111,21 @@
   max-width: 20px;
 }
 
-@media only screen and (max-width: 540px) {
-  .App-pray-for-us {
-    padding: 80px 40px 130px;
-    background-size: 170px;
+@media only screen and (max-width: 768px) {
+  .App-sub-title {
+    font-size: 20px;
+    line-height: 30px;
   }
 
-  .App-info {
-    padding: 0 30px;
+  .App-title {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .App-pray-for-us {
+    padding: 40px 0px 50px;
+    background-size: 170px;
   }
 }

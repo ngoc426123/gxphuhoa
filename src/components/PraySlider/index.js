@@ -24,16 +24,6 @@ export default function PraySlider(props) {
         spaceBetween={10}
         centeredSlides={true}
         initialSlide={1}
-        // breakpoints={{
-        //   768: {
-        //     slidesPerView: 2,
-        //     spaceBetween: 15,
-        //   },
-        //   991: {
-        //     slidesPerView: 3,
-        //     spaceBetween: 20,
-        //   }
-        // }}
       >
         {data && data.map(item => (
           <SwiperSlide key={item.positionID}>
@@ -44,6 +34,11 @@ export default function PraySlider(props) {
               <div className='pray-slider__info'>
                 <div className='pray-slider__name'>{item.name || 'Chưa có tên'}</div>
                 <div className='pray-slider__year-of-dead'>Ngày mất: {item.yearOfDeadFormat || 'Chưa thông tin'}</div>
+                <div className='pray-slider__position-info'>
+                  <div className='pray-slider__position-item'>Số kệ: {item.shelf || 'Chưa thông tin'}</div>
+                  <div className='pray-slider__position-item'>Số hàng: {item.row || 'Chưa thông tin'}</div>
+                  <div className='pray-slider__position-item'>Vị trí: {item.number || 'Chưa thông tin'}</div>
+                </div>
               </div>
             </div>
           </SwiperSlide>

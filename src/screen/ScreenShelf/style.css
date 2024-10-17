@@ -1,16 +1,27 @@
 .screen-shelf {
+  display: flex;
+  align-items: stretch;
+  max-width: 100%;
+  padding-bottom: 10px;
   text-align: center;
+  overflow: hidden;
+  overflow-x: auto;
 }
 
 .screen-shelf__shelf {
   display: block;
   border: solid 1px #000000;
+  margin: 0 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .screen-shelf__shelf-head {
   padding: 15px 10px;
   background-color: #000000;
   color: #FFFFFF;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .screen-shelf__shelf-title {
@@ -36,6 +47,8 @@
 }
 
 .screen-shelf__shelf-cell {
+  width: 40px;
+  min-height: 45px;
   padding: 10px;
   flex-basis: 100%;
   flex-grow: 1;

@@ -14,7 +14,7 @@ Modal.setAppElement('#root-pray-for-us');
 
 function App() {
   // STATE
-  const [view, setView] = useState(1); // 0: is block | 1: is calendar
+  const [view, setView] = useState(0); // 0: is block | 1: is calendar
 
   // RENDER
   return (

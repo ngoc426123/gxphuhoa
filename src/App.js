@@ -24,11 +24,11 @@ function App() {
         <div className='App-title'>Nhà chờ phục sinh</div>
         <div className='App-desc'>"Chính lúc chết đi là khi vui sống muôn đời."</div>
         <div className='App-control-view'>
-          <button className={view === 1 ? '--active' : '' } onClick={() => setView(1)}>
-            <img src={Calendar_icon} alt=''/>
-          </button>
           <button className={view === 0 ? '--active' : '' } onClick={() => setView(0)}>
             <img src={Block_icon} alt=''/>
+          </button>
+          <button className={view === 1 ? '--active' : '' } onClick={() => setView(1)}>
+            <img src={Calendar_icon} alt=''/>
           </button>
         </div>
       </div>

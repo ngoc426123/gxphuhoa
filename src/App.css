@@ -42,3 +42,26 @@
   line-height: 50px;
   font-weight: 300;
 }
+
+.App-date-control {
+  display: flex;
+  align-items: center;
+}
+
+.App-date-control__cta {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border: none;
+  background: transparent;
+  border: solid 1px #E5E5E5;
+  border-radius: 100%;
+}
+
+.App-date-control__cta img {
+  max-width: 100%;
+}
+
+.App-date-control__cta.--right img {
+  transform: rotate(180deg);
+}

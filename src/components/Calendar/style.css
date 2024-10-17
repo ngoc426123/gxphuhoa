@@ -39,7 +39,7 @@
 }
 
 .calendar__day.--need-pray {
-  background-color: rgba(134, 11, 117, 0.15);
+  background-color: rgba(163, 31, 146, 0.15);
 }
 
 .calendar__day:hover .calendar__day-name {

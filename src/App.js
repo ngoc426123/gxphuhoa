@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import Calendar from './components/Calendar';
 import { months } from './constants/date';
@@ -7,6 +7,8 @@ import { months } from './constants/date';
 import Left_icon from './assets/images/angle-left.svg';
 
 function App() {
+  const _timeRef = useRef();
+
   // STATE
   const [current, setCurrent] = useState({ month: 10, year: 2024 });
   const [prayData, setPrayData] = useState([]);
@@ -42,6 +44,7 @@ function App() {
       currentMonth--;
     }
 
+    setPrayData(() => []);
     setCurrent({ month: currentMonth, year: currentYear });
   };
 
@@ -56,7 +59,8 @@ function App() {
       currentMonth++;
     }
 
-    setCurrent({ month: currentMonth, year: currentYear });
+    setPrayData(() => []);
+    setCurrent(() => ({ month: currentMonth, year: currentYear }));
   };
 
   const onClickDay = (day, month) => {
@@ -65,8 +69,14 @@ function App() {
 
   // SIDE EFFECT
   useEffect(() => {
-    getPrayForUs();
-  }, [getPrayForUs]);
+    _timeRef.current = setTimeout(() => {
+      getPrayForUs();
+    }, 300);
+
+    return () => {
+      clearTimeout(_timeRef.current);
+    }
+  }, [getPrayForUs, current]);
 
   // RENDER
   return (

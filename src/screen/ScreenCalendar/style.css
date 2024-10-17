@@ -36,10 +36,6 @@
   border-radius: 100%;
 }
 
-.screen-calendar__control-cta img {
-  max-width: 100%;
-}
-
 .screen-calendar__control-cta.--right img {
   transform: rotate(180deg);
 }

@@ -11,11 +11,12 @@ import Close_icon from '../../assets/images/close.svg';
 // STYLE
 import './style.css';
 
-function ViewCalendar() {
+export default function ScreenCalendar() {
   const _timeRef = useRef();
+  const now = new Date();
 
   // STATE
-  const [current, setCurrent] = useState({ month: 10, year: 2024 });
+  const [current, setCurrent] = useState({ month: now.getMonth() + 1, year: now.getFullYear() });
   const [prayData, setPrayData] = useState([]);
   const [praySliderData, setPraySliderData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -164,4 +165,3 @@ function ViewCalendar() {
   );
 }
 
-export default ViewCalendar;

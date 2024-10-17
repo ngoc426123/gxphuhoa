@@ -1,5 +1,5 @@
 .App-pray-for-us {
-  padding: 100px 60px 200px;
+  padding: 100px 40px 200px;
   background-image: 
     url(./assets/images/coner-top-left.svg),
     url(./assets/images/coner-top-right.svg),
@@ -11,8 +11,12 @@
   border: solid 10px #000000
 }
 
+.App-pray-for-us img {
+  max-width: 100%;
+}
+
 .App-info {
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .App-title {
@@ -29,6 +33,42 @@
   font-weight: 300;
   font-style: italic;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.App-control-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-control-view button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  border: none;
+  background: transparent;
+  border: solid 1px #E5E5E5;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+
+.App-control-view button.--active {
+  border-color: #000000;
+}
+
+.App-control-view button.--active img {
+  opacity: 1;
+}
+
+.App-control-view button img {
+  display: block;
+  max-width: 20px;
+  opacity: 0.3;
+  transition: all 0.2s ease;
 }
 
 .houdini-modal-overlay {

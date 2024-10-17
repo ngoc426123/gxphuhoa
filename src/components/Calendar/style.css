@@ -44,6 +44,8 @@
 
 .calendar__day.--need-pray {
   background-color: rgba(163, 31, 146, 0.15);
+  border-left: solid 1px rgba(255, 255, 255, 0.4);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }
 
 .calendar__day:hover .calendar__day-name {
@@ -96,4 +98,38 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .calendar__weekday {
+    display: none;
+  }
+
+  .calendar__days {
+    border-top: solid 1px #E5E5E5;
+  }
+
+  .calendar__day {
+    height: 100px;
+    flex-basis: 50%;
+  }
+
+  .calendar__day.--blank {
+    display: none;
+  }
+
+  .calendar__day-name {
+    right: auto;
+    left: 20px;
+  }
+
+  .calendar__peace-list { 
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .calendar__day {
+    flex-basis: 100%;
+  }
 }

@@ -1,5 +1,10 @@
-import './App.css';
 import ViewCalendar from './screen/ViewCalendar';
+import Modal from 'react-modal';
+
+// STYLE
+import './App.css';
+
+Modal.setAppElement('#root-pray-for-us');
 
 function App() {
   // RENDER

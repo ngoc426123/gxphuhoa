@@ -1,0 +1,56 @@
+.pray-slider {
+  width: 100%;
+}
+
+.pray-slider__head {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.pray-slider__title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #860b76;
+  text-transform: uppercase;
+}
+
+.pray-slider__desc {
+  font-style: italic;
+}
+
+.swiper-slide {
+  width: 220px;
+}
+
+.pray-slider__image {
+  margin-bottom: 20px;
+}
+
+.pray-slider__image img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pray-slider__info {
+  text-align: center;
+}
+
+.pray-slider__year-of-dead {
+  font-size: 12px;
+  color: #bbbbbb;
+}
+
+.pray-slider__slider {
+  margin-bottom: 30px;
+}
+
+.pray-slider__text-swipe {
+  font-size: 12px;
+  line-height: 20px;
+  font-style: italic;
+  text-align: center;
+  color: #b3b3b3;
+}

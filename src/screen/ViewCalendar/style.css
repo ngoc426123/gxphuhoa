@@ -9,13 +9,13 @@
   display: block;
 }
 
-.screen-calendar__info__year {
+.screen-calendar__info-year {
   font-size: 40px;
   line-height: 40px;
   font-weight: 700;
 }
 
-.screen-calendar__info__month {
+.screen-calendar__info-month {
   font-size: 50px;
   line-height: 50px;
   font-weight: 300;
@@ -26,7 +26,7 @@
   align-items: center;
 }
 
-.screen-calendar__control__cta {
+.screen-calendar__control-cta {
   width: 40px;
   height: 40px;
   margin-right: 10px;
@@ -36,10 +36,22 @@
   border-radius: 100%;
 }
 
-.screen-calendar__control__cta img {
+.screen-calendar__control-cta img {
   max-width: 100%;
 }
 
-.screen-calendar__control__cta.--right img {
+.screen-calendar__control-cta.--right img {
   transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 540px) {
+  .screen-calendar__info-year {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .screen-calendar__info-month {
+    font-size: 30px;
+    line-height: 30px;
+  }
 }

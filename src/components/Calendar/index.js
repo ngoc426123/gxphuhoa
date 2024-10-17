@@ -38,36 +38,13 @@ export default function Calendar(props) {
       }
     });
   }, [month, year]);
-  const onCalendarPrayData = useMemo(() => {
-    return prayData
-      .reduce((cum, cur) => {
-        const date = new Date(cur.yearOfDead);
-        const day = date.getDate();
-        const hasDay = cum.some(item => item.day === day);
-
-        if (hasDay) {
-          const shipIndex = cum.findIndex(item => item.day === day);
-          const shipFilter = cum.filter(item => item.day === day)[0];
-          const shipData = shipFilter.data;
-
-          shipData.push(cur);
-
-          cum[shipIndex] = { ...cum[shipIndex], data: shipData };
-        } else {
-          cum.push({ day, data: [cur] });
-        }
-
-        return cum;
-      }, [])
-      .sort((a, b) => a.day - b.day);
-  }, [prayData]);
   const onTopData = useMemo(() => {
     return listdayData.map(item => {
-      const filterCal = onCalendarPrayData.filter(it => it.day === item.day)[0];
+      const filterCal = prayData.filter(it => it.day === item.day)[0];
 
       return { ...item, ...filterCal };
     });
-  }, [listdayData, onCalendarPrayData]);
+  }, [listdayData, prayData]);
 
   // RENDER
   return (
@@ -81,7 +58,7 @@ export default function Calendar(props) {
         {onTopData && onTopData.map((day, index) => (
           <div
             key={index}
-            className={`calendar__day ${day.data ? '--need-pray' : ''}`}
+            className={`calendar__day ${day.data ? '--need-pray' : ''} ${!day.day ? '--blank' : ''}`}
             {...(day.data 
               ? { onClick: () => onClickDay(day.day, month) } 
               : {})

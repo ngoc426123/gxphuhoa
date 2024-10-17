@@ -1,0 +1,45 @@
+.screen-calendar__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.screen-calendar__info {
+  display: block;
+}
+
+.screen-calendar__info__year {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+.screen-calendar__info__month {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 300;
+}
+
+.screen-calendar__control {
+  display: flex;
+  align-items: center;
+}
+
+.screen-calendar__control__cta {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border: none;
+  background: transparent;
+  border: solid 1px #E5E5E5;
+  border-radius: 100%;
+}
+
+.screen-calendar__control__cta img {
+  max-width: 100%;
+}
+
+.screen-calendar__control__cta.--right img {
+  transform: rotate(180deg);
+}

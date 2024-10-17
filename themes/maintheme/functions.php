@@ -4,11 +4,13 @@
 ///                        ADD CSS AND JS FOR STYLE                           ///
 /////////////////                                               /////////////////
 add_filter('use_block_editor_for_post', '__return_false');
+
 function gxphuhoa_styles(){
   wp_enqueue_style('gxStyleTemplate', get_template_directory_uri().'/css/style.min.css','all' );
   wp_enqueue_style('gxStyleDeco', get_stylesheet_directory_uri().'/style.css','all' );
 }
 add_action('wp_enqueue_scripts', 'gxphuhoa_styles');
+
 function gxphuhoa_scripts(){
   wp_enqueue_script('gxScript', get_template_directory_uri().'/js/app.min.js');
 
@@ -25,11 +27,26 @@ function my_deregister_scripts(){
   wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_footer', 'my_deregister_scripts' );
+
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////                                               /////////////////
+///               ENQUEUE SCRIPT AND STYLE NHA CHO PHUC SINH                  ///
+/////////////////                                               /////////////////
+function nhachophucsinh_styles(){
+  wp_enqueue_style('gxStyleNhaChoPhucSinh', get_template_directory_uri().'/nha-cho-phuc-sinh/static/css/main.81ab7866.css','all' );
+}
+add_action('wp_enqueue_scripts', 'nhachophucsinh_styles');
+
+function nhachophucsinh_scripts(){
+  wp_enqueue_script('gxScriptNhaChoPhucSinh', get_template_directory_uri().'/nha-cho-phuc-sinh/static/js/main.f788d953.js');
+}
+add_action('wp_footer', 'nhachophucsinh_scripts');
+
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////                                               /////////////////
 ///                               META BOX                                    ///
@@ -257,6 +274,11 @@ class api_gxphuhoa {
       'callback' => array($this, 'get_gallery_author_user'),
     ));
 
+    register_rest_route('apigxphuhoa', '/pray-for-us/getall', array(
+      'methods' => 'GET',
+      'callback' => array($this, 'get_pray_for_us_all'),
+    ));
+
     register_rest_route('apigxphuhoa', '/pray-for-us/(?P<month>\d+)', array(
       'methods' => 'GET',
       'callback' => array($this, 'get_pray_for_us_on_month'),
@@ -378,8 +400,40 @@ class api_gxphuhoa {
     return new WP_REST_Response($data, 200);
   }
 
+  public function get_pray_for_us_all() {
+    $respondData = [];
+    $args = array(
+      'post_type'  => 'pray-for-us',
+      'order'      => 'DESC',
+      'orderby'    => 'date',
+    );
+    $the_query = new WP_Query($args);
+    $resultQuery = $the_query->posts;
+
+    foreach ($resultQuery as $key => $value) {
+      $ID = $value->ID;
+      $name = $value->post_title;
+
+      $respondData[] = [
+        'ID' => $ID,
+        'name' => $name,
+        'positionID' => get_post_meta($ID, 'wpcf-pray-for-us-ID', true),
+        'img' => get_the_post_thumbnail_url($ID),
+        'yearOfBirth' => get_post_meta($ID, 'wpcf-pray-for-us-yearofbirth', true),
+        'yearOfDead' => get_post_meta($ID, 'wpcf-pray-for-us-yearofdead', true),
+        'shelf' => get_post_meta($ID, 'wpcf-pray-for-us-shelf', true),
+        'row' => get_post_meta($ID, 'wpcf-pray-for-us-row', true),
+        'number' => get_post_meta($ID, 'wpcf-pray-for-us-number', true),
+      ];
+    }
+
+    return new WP_REST_Response($respondData, 200);
+  }
+
   public function get_pray_for_us_on_month($request) {
+    $respondData = [];
     $month = $request->get_param('month');
+    $month = paddingNumber($month, 2);
     $args = array(
       'post_type'  => 'pray-for-us',
       'order'      => 'DESC',
@@ -387,7 +441,7 @@ class api_gxphuhoa {
       'meta_query' => [
         [
           'key'     => 'wpcf-pray-for-us-yearofdead',
-          'value'   => '^[0-9]{2}\/'.$month.'/[0-9]{4}',
+          'value'   => '^[0-9]{4}\-'.$month.'\-[0-9]{2}',
           'compare' => 'REGEXP'
         ]
       ]
@@ -397,22 +451,29 @@ class api_gxphuhoa {
 
     foreach ($resultQuery as $key => $value) {
       $ID = $value->ID;
+      $name = $value->post_title;
 
-      $resultQuery[$key]->img = get_the_post_thumbnail_url($ID);
-      $resultQuery[$key]->prayID = get_post_meta( $ID, 'wpcf-pray-for-us-ID', true);
-      $resultQuery[$key]->yearBirth = get_post_meta( $ID, 'wpcf-pray-for-us-yearofbirth', true);
-      $resultQuery[$key]->yearDead = get_post_meta( $ID, 'wpcf-pray-for-us-yearofdead', true);
-      $resultQuery[$key]->shelf = get_post_meta( $ID, 'wpcf-pray-for-us-shelf', true);
-      $resultQuery[$key]->row = get_post_meta( $ID, 'wpcf-pray-for-us-row', true);
-      $resultQuery[$key]->number = get_post_meta( $ID, 'wpcf-pray-for-us-number', true);
+      $respondData[] = [
+        'ID' => $ID,
+        'name' => $name,
+        'positionID' => get_post_meta($ID, 'wpcf-pray-for-us-ID', true),
+        'img' => get_the_post_thumbnail_url($ID),
+        'yearOfBirth' => get_post_meta($ID, 'wpcf-pray-for-us-yearofbirth', true),
+        'yearOfDead' => get_post_meta($ID, 'wpcf-pray-for-us-yearofdead', true),
+        'shelf' => get_post_meta($ID, 'wpcf-pray-for-us-shelf', true),
+        'row' => get_post_meta($ID, 'wpcf-pray-for-us-row', true),
+        'number' => get_post_meta($ID, 'wpcf-pray-for-us-number', true),
+      ];
     }
 
-    return new WP_REST_Response($resultQuery, 200);
+    return new WP_REST_Response($respondData, 200);
   }
 
   public function get_pray_for_us_on_day_month($request) {
+    $respondData = [];
     $day = $request->get_param('day');
     $month = $request->get_param('month');
+    $month = paddingNumber($month, 2);
     $args = array(
       'post_type'  => 'pray-for-us',
       'order'      => 'DESC',
@@ -421,12 +482,12 @@ class api_gxphuhoa {
         'relation' => 'AND',
         [
           'key'     => 'wpcf-pray-for-us-yearofdead',
-          'value'   => '^[0-9]{2}\/'.$month.'/[0-9]{4}',
+          'value'   => '^[0-9]{4}\-'.$month.'\-[0-9]{2}',
           'compare' => 'REGEXP'
         ],
         [
           'key'     => 'wpcf-pray-for-us-yearofdead',
-          'value'   => $day.'/'.$month.'/[0-9]{4}',
+          'value'   => '^[0-9]{4}\-'.$month.'\-'.$day,
           'compare' => 'REGEXP'
         ]
       ]
@@ -436,18 +497,37 @@ class api_gxphuhoa {
 
     foreach ($resultQuery as $key => $value) {
       $ID = $value->ID;
+      $name = $value->post_title;
 
-      $resultQuery[$key]->img = get_the_post_thumbnail_url($ID);
-      $resultQuery[$key]->prayID = get_post_meta( $ID, 'wpcf-pray-for-us-ID', true);
-      $resultQuery[$key]->yearBirth = get_post_meta( $ID, 'wpcf-pray-for-us-yearofbirth', true);
-      $resultQuery[$key]->yearDead = get_post_meta( $ID, 'wpcf-pray-for-us-yearofdead', true);
-      $resultQuery[$key]->shelf = get_post_meta( $ID, 'wpcf-pray-for-us-shelf', true);
-      $resultQuery[$key]->row = get_post_meta( $ID, 'wpcf-pray-for-us-row', true);
-      $resultQuery[$key]->number = get_post_meta( $ID, 'wpcf-pray-for-us-number', true);
+      $respondData[] = [
+        'ID' => $ID,
+        'name' => $name,
+        'positionID' => get_post_meta($ID, 'wpcf-pray-for-us-ID', true),
+        'img' => get_the_post_thumbnail_url($ID),
+        'yearOfBirth' => get_post_meta($ID, 'wpcf-pray-for-us-yearofbirth', true),
+        'yearOfDead' => get_post_meta($ID, 'wpcf-pray-for-us-yearofdead', true),
+        'shelf' => get_post_meta($ID, 'wpcf-pray-for-us-shelf', true),
+        'row' => get_post_meta($ID, 'wpcf-pray-for-us-row', true),
+        'number' => get_post_meta($ID, 'wpcf-pray-for-us-number', true),
+      ];
     }
 
-    return new WP_REST_Response($resultQuery, 200);
+    return new WP_REST_Response($respondData, 200);
   }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////                                               /////////////////
+///                           UTILS FUNCTION                                  ///
+/////////////////                                               /////////////////
+function paddingNumber($number, $padding) {
+  $num = $number."";
+
+    while (strlen($num) < $padding) {
+      $num = "0" . $num;
+    }
+
+    return $num;
 }
 
 /////////////////////////////////////////////////////////////////////////////////

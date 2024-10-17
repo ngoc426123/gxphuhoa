@@ -9,7 +9,8 @@ jQuery('document').ready(() => {
 			yearStart,
 			yearEnd,
       timepicker: false,
-      format: 'd/m/Y',
+			defaultTime: '00:00',
+      format: 'Y-m-d H:i:s',
     });
 
   const $ID = jQuery('#pray-for-us-ID');

@@ -10,8 +10,10 @@ function App() {
   // RENDER
   return (
     <div className="App-pray-for-us">
-      <div className='App-title'>Xin cầu cho các linh hồn</div>
-      <div className='App-desc'>"Chính lúc chết đi là khi vui sống muôn đời."</div>
+      <div className='App-info'>
+        <div className='App-title'>Xin cầu cho các linh hồn</div>
+        <div className='App-desc'>"Chính lúc chết đi là khi vui sống muôn đời."</div>
+      </div>
       <ViewCalendar />
     </div>
   );

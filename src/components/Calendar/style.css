@@ -11,7 +11,7 @@
 .calendar__weekday-day {
   padding: 14px 20px;
   padding-top: 30px;
-  background-color: #860b76;
+  background-color: #000000;
   color: #ffffff;
   font-weight: 600;
   flex-basis: 14.285714%;
@@ -43,7 +43,7 @@
 }
 
 .calendar__day.--need-pray {
-  background-color: rgba(163, 31, 146, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   border-left: solid 1px rgba(255, 255, 255, 0.4);
   border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }

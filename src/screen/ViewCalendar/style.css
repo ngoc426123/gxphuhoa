@@ -10,14 +10,14 @@
 }
 
 .screen-calendar__info-year {
-  font-size: 40px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 30px;
   font-weight: 700;
 }
 
 .screen-calendar__info-month {
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 40px;
+  line-height: 40px;
   font-weight: 300;
 }
 

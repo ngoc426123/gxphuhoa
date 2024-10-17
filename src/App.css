@@ -1,12 +1,24 @@
 .App-pray-for-us {
-  padding: 50px 0 25px;
+  padding: 100px 60px 200px;
+  background-image: 
+    url(./assets/images/coner-top-left.svg),
+    url(./assets/images/coner-top-right.svg),
+    url(./assets/images/coner-bottom-right.svg),
+    url(./assets/images/coner-bottom-left.svg);
+  background-position: top left, top right, bottom right, bottom left;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  border: solid 10px #000000
+}
+
+.App-info {
+  margin-bottom: 30px;
 }
 
 .App-title {
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 35px;
+  line-height: 43px;
   font-weight: 700;
-  color: #860b76;
   text-align: center;
   text-transform: uppercase;
 }
@@ -17,7 +29,6 @@
   font-weight: 300;
   font-style: italic;
   text-align: center;
-  margin-bottom: 50px;
 }
 
 .houdini-modal-overlay {
@@ -59,4 +70,15 @@
 
 .houdini-modal-close img {
   max-width: 20px;
+}
+
+@media only screen and (max-width: 540px) {
+  .App-pray-for-us {
+    padding: 80px 40px 130px;
+    background-size: 170px;
+  }
+
+  .App-info {
+    padding: 0 30px;
+  }
 }

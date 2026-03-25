@@ -1,36 +1,95 @@
 extends _layout/_layout
 
 block main-content
+  //- ============================================================
+  //- TOP HOME — layout 3 cột kiểu tin tức
+  //- ============================================================
   .topHome
-    .grid
-      .col
-        +newsInner({
-          img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/thu-bay-tuan-6-PS_B-570x336.jpg',
-          cat: 'SUY NIỆM',
-          title: 'Thứ Bảy Tuần VI Phục Sinh : Ân Sủng Và Sự Thật',
-          link: '#'
+    //- Cột trái: 1 bài hero lớn
+    .topHome-left
+      +newsCard({
+        img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/thu-bay-tuan-6-PS_B-570x336.jpg',
+        cat: 'SUY NIỆM',
+        title: 'Thứ Bảy Tuần VI Phục Sinh: Ân Sủng Và Sự Thật',
+        des: 'Thinh lặng lắng nghe tiếng gọi của Thiên Chúa, cộng đoàn hân hoan bước vào tuần thứ sáu mùa phục sinh với tâm tình tạ ơn và phục vụ.',
+        link: 'single.html'
+      })
+      .topHome-left-sub
+        +newsCard({
+          img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
+          cat: 'THÔNG BÁO',
+          title: 'Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
+          link: 'single.html'
         })
-      .col
-        +newsInner({
-          img: 'https://gxphuhoa.org/wp-content/uploads/2020/08/cau-nguyen-voi-phuc-am-2-469x352.jpg',
-          cat: 'SUY NIỆM',
-          title: 'CẦU NGUYỆN VỚI PHÚC ÂM – THỨ BẢY TUẦN 6 PHỤC SINH B',
-          link: '#'
+        +newsCard({
+          img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
+          cat: 'THÔNG BÁO',
+          title: 'Lãnh nhận Bi Tích xưng tội lần đầu – Rước Lễ lần đầu cho các em thiếu nhi',
+          link: 'single.html'
         })
-      .col
-        +newsInner({
-          img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/thu-sau-tuan-6-PS-B-570x323.jpg',
-          cat: 'SUY NIỆM',
-          title: 'Thứ Sáu Tuần VI Phục Sinh : MÁTTHIA ƠN GỌI ĐẶC BIỆT',
-          link: '#',
-          isV2: true
+        +newsCard({
+          img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/THANH-GIUSE-THO-01-05-570x321.jpg',
+          cat: 'TIN GIÁO XỨ',
+          title: 'Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ và HĐMV năm B',
+          link: 'single.html'
         })
-        +newsInner({
-          img: 'https://gxphuhoa.org/wp-content/uploads/2020/08/CAU-NGUYEN-VOI-PHUC-AM-1-2-528x352.jpg',
-          cat: 'SUY NIỆM',
-          title: 'CẦU NGUYỆN VỚI PHÚC ÂM – THỨ SÁU  TUẦN 6 PHỤC SINH B',
-          link: '#',
-          isV2: true
+
+    //- Cột giữa: 2 bài card dọc
+    .topHome-mid
+      +newsCard({
+        img: 'https://gxphuhoa.org/wp-content/uploads/2020/08/cau-nguyen-voi-phuc-am-2-469x352.jpg',
+        cat: 'SUY NIỆM',
+        title: 'CẦu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B',
+        des: 'Người kiên trì cầu nguyện với Lời Thánh, người đó sẽ khống lưu được sự bình an và niềm vui sâu xa trong tâm hồn.',
+        link: 'single.html'
+      })
+      +newsCard({
+        img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/thu-sau-tuan-6-PS-B-570x323.jpg',
+        cat: 'SUY NIỆM',
+        title: 'Thứ Sáu Tuần VI Phục Sinh: Mátthia – Ơn Gọi Đặc Biệt',
+        des: 'Giữa những biến cố của cuộc đời, mỗi người chúng ta đều mang một ơn gọi riêng biệt từ Thánh Thần.',
+        link: 'single.html'
+      })
+
+    //- Cột phải: 1 ảnh nổi bật + danh sách text
+    .topHome-right
+      .topHome-right-featured
+        +newsCard({
+          img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
+          cat: 'NỔI BẬT',
+          title: 'Video: Thánh Lễ Kính Giuse Bổn Mạng Giáo Xứ và HĐMV',
+          link: 'single.html'
+        })
+      .topHome-right-list
+        +newsCardText({
+          title: 'Thông báo: Thánh lễ Kính Thánh Phaolo trở lại bổn mạng Giáo Khu 5',
+          date: '09/05/2021',
+          link: 'single.html'
+        })
+        +newsCardText({
+          title: 'Lễ Đức Mẹ Vô Nhiễm Nguyên Tội: Bổn mạng Giáo Khu IV',
+          date: '09/05/2021',
+          link: 'single.html'
+        })
+        +newsCardText({
+          title: 'Lễ kính Thánh Giuse Thợ Bổn mạng Giáo Xứ & HĐMV',
+          date: '09/05/2021',
+          link: 'single.html'
+        })
+        +newsCardText({
+          title: 'Thông báo: Thánh lễ Kính Thánh Phanxicô Xavie bổn mạng Giáo Khu 6',
+          date: '09/05/2021',
+          link: 'single.html'
+        })
+        +newsCardText({
+          title: 'Cầu nguyện với Phúc Âm – Thứ Sáu Tuần 6 Phục Sinh B',
+          date: '09/05/2021',
+          link: 'single.html'
+        })
+        +newsCardText({
+          title: 'Hành hương Đức Mẹ Bãi Dâu – Giáo Khu Thánh Giuse',
+          date: '09/05/2021',
+          link: 'single.html'
         })
   .audioHome
     +audioHome([
@@ -141,124 +200,191 @@ block main-content
       ])
   .row
     .col-12.col-lg-9
-      .row
-        .col-12.col-lg-4
-          .newsFocusHome
-            +newsList([
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg',
-                title: '[AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ THIẾU NHI',
-                date: '17:24 09/05/2021',
-                link: '#',
-                cat: 'Tin Giáo Xứ'
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
-                title: 'THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
-                title: 'THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu- Rước Lễ lần đầu',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
-                title: 'VIDEO: Thánh Lễ Kính Giuse Bổn mạng Giáo xứ và HĐMV',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/DSC04962-570x320.jpg',
-                title: 'Lễ kính Thánh Giuse Thợ Bổn mạng Giáo xứ & HĐMV',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-            ])
-        .col-12.col-lg-4
-          .newsFocusHome
-            +newsList([
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg',
-                title: '[AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ THIẾU NHI',
-                date: '17:24 09/05/2021',
-                link: '#',
-                cat: 'Tin Giáo Xứ'
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
-                title: 'THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
-                title: 'THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu- Rước Lễ lần đầu',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
-                title: 'VIDEO: Thánh Lễ Kính Giuse Bổn mạng Giáo xứ và HĐMV',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/DSC04962-570x320.jpg',
-                title: 'Lễ kính Thánh Giuse Thợ Bổn mạng Giáo xứ & HĐMV',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-            ])
-        .col-12.col-lg-4
-          .newsFocusHome
-            +newsList([
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg',
-                title: '[AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ THIẾU NHI',
-                date: '17:24 09/05/2021',
-                link: '#',
-                cat: 'Tin Giáo Xứ'
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
-                title: 'THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
-                title: 'THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu- Rước Lễ lần đầu',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
-                title: 'VIDEO: Thánh Lễ Kính Giuse Bổn mạng Giáo xứ và HĐMV',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-              {
-                img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/DSC04962-570x320.jpg',
-                title: 'Lễ kính Thánh Giuse Thợ Bổn mạng Giáo xứ & HĐMV',
-                date: '17:24 09/05/2021',
-                link: '#',
-                isImgLeft: true,
-              },
-            ])
+      .newsFocusTabs
+        ul.nav.newsFocusTabs-nav(role='tablist')
+          li.nav-item(role='presentation')
+            button.nav-link.active(type='button' role='tab' data-bs-toggle='tab' data-bs-target='#tab-tingiaoxu' aria-selected='true') Tin Giáo Xứ
+          li.nav-item(role='presentation')
+            button.nav-link(type='button' role='tab' data-bs-toggle='tab' data-bs-target='#tab-suyniem' aria-selected='false') Suy Niệm
+          li.nav-item(role='presentation')
+            button.nav-link(type='button' role='tab' data-bs-toggle='tab' data-bs-target='#tab-thongbao' aria-selected='false') Thông Báo
+        .tab-content.newsFocusTabs-content
+          //- TAB 1: Tin Giáo Xứ
+          #tab-tingiaoxu.tab-pane.fade.show.active(role='tabpanel')
+            .newsFocusTabs-pane
+              .newsFocusTabs-feature
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg',
+                  title: 'Chầu Thánh Thể mừng kính Thánh Giuse Thợ bổn mạng giáo xứ và HĐMV',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  cat: 'Tin Giáo Xứ'
+                })
+              .newsFocusTabs-grid
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
+                  title: 'Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
+                  title: 'Lãnh nhận Bí Tích xưng tội lần đầu – Rước Lễ lần đầu cho các em thiếu nhi',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
+                  title: 'VIDEO: Thánh Lễ Kính Giuse Bổn mạng Giáo xứ và HĐMV',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/DSC04962-570x320.jpg',
+                  title: 'Lễ kính Thánh Giuse Thợ Bổn mạng Giáo xứ & HĐMV',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/THANH-GIUSE-THO-01-05-570x321.jpg',
+                  title: 'Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ và HĐMV năm B',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/DSC04962-570x320.jpg',
+                  title: 'Lễ kính Thánh Giuse Thợ Bổn mạng Giáo xứ & HĐMV',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
+                  title: 'Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
+                  title: 'Lãnh nhận Bí Tích xưng tội lần đầu – Rước Lễ lần đầu cho các em thiếu nhi',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+          //- TAB 2: Suy Niệm
+          #tab-suyniem.tab-pane.fade(role='tabpanel')
+            .newsFocusTabs-pane
+              .newsFocusTabs-feature
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/08/cau-nguyen-voi-phuc-am-2-469x352.jpg',
+                  title: 'Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  cat: 'Suy Niệm'
+                })
+              .newsFocusTabs-grid
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/thu-sau-tuan-6-PS-B-570x323.jpg',
+                  title: 'Thứ Sáu Tuần VI Phục Sinh: Mátthia – Ơn Gọi Đặc Biệt',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/thu-bay-tuan-6-PS_B-570x336.jpg',
+                  title: 'Thứ Bảy Tuần VI Phục Sinh: Ân Sủng Và Sự Thật',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/08/CAU-NGUYEN-VOI-PHUC-AM-1-2-528x352.jpg',
+                  title: 'Cầu nguyện với Phúc Âm – Thứ Sáu Tuần 6 Phục Sinh B',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/THANH-GIUSE-THO-01-05-570x321.jpg',
+                  title: 'Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ và HĐMV năm B',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
+                  title: 'VIDEO: Thánh Lễ Kính Giuse Bổn mạng Giáo xứ và HĐMV',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/Chua-nhat-tuan-6-PS-B-469x352.jpg',
+                  title: 'Chúa Nhật VI Phục Sinh B: Hãy Yêu Thương Nhau',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+          //- TAB 3: Thông Báo
+          #tab-thongbao.tab-pane.fade(role='tabpanel')
+            .newsFocusTabs-pane
+              .newsFocusTabs-feature
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/Chua-nhat-tuan-6-PS-B-469x352.jpg',
+                  title: 'Thông báo: Thánh lễ Kính Thánh Phaolo trở lại bổn mạng Giáo Khu 5',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  cat: 'Thông Báo'
+                })
+              .newsFocusTabs-grid
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/12/BM-KG4-5-570x321.jpeg',
+                  title: 'Lễ Đức Mẹ Vô Nhiễm Nguyên Tội: Bổn mạng Giáo khu IV',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/12/BM-KG6-2-570x321.jpeg',
+                  title: 'Lãnh nhận Bí Tích xưng tội lần đầu – Rước Lễ lần đầu',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2018/12/Thanh-Phanxicoxavie-570x321.jpg',
+                  title: 'Thánh lễ Kính Thánh Phanxicô Xavie bổn mạng Giáo khu 6',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg',
+                  title: 'VIDEO: Thánh Lễ Kính Giuse Bổn mạng Giáo xứ và HĐMV năm B',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/Chua-nhat-tuan-6PS-469x352.jpg',
+                  title: 'Thông báo lịch Thánh Lễ tuần thứ VI Mùa Phục Sinh',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
+                +news({
+                  img: 'https://gxphuhoa.org/wp-content/uploads/2021/05/chua-nhat-tuan-5-PS-B-469x352.jpg',
+                  title: 'Thánh Lễ Thiếu Nhi: Chúa Nhật V Phục Sinh Thầy Là Cây Nho',
+                  date: '17:24 09/05/2021',
+                  link: '#',
+                  isImgLeft: true,
+                })
       +boxNewsHome({
         title: 'Hội Đồng Mục Vụ',
         icon: 'fa-newspaper',
@@ -475,60 +601,58 @@ block main-content
           },
         ]
       })
-      .faqHome
-        .title Hỏi đáp
-        .grid
-          +listFaq([
-            {
-              title: 'Ý nghĩa và ơn ích của Thánh Lễ Misa',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Điều kiện lãnh nhận Ơn Toàn Xá?',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Những giá trị gia đình thời nay bị đảo lộn!',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Một số vấn đề cần lưu ý liên quan đến Phụng vụ Thánh lễ',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Nghi thức thống hối trong lễ Phục Sinh được thực hiện ra sao?',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'TẠI SAO CẦN XIN THÁNH LỄ CẦU CHO CÁC LINH HỒN ?',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Các điều kiện lãnh Ơn Toàn Xá trong tháng 11 được điều chỉnh',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Tìm hiểu Ơn Toàn Xá trong mùa đại dịch Covid -19',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Có buộc xưng tội trong mùa Chay không?',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-            {
-              title: 'Có buộc xưng tội trong mùa Chay không?',
-              date: '17:24 09/05/2021',
-              link: '#',
-            },
-          ])
     .col-12.col-lg-3
       include ./_components/_sidebar.pug
+  .faqHome
+    +listFaq([
+        {
+          title: 'Ý nghĩa và ơn ích của Thánh Lễ Misa',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Điều kiện lãnh nhận Ơn Toàn Xá?',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Những giá trị gia đình thời nay bị đảo lộn!',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Một số vấn đề cần lưu ý liên quan đến Phụng vụ Thánh lễ',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Nghi thức thống hối trong lễ Phục Sinh được thực hiện ra sao?',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'TẠI SAO CẦN XIN THÁNH LỄ CẦU CHO CÁC LINH HỒN ?',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Các điều kiện lãnh Ơn Toàn Xá trong tháng 11 được điều chỉnh',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Tìm hiểu Ơn Toàn Xá trong mùa đại dịch Covid -19',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Có buộc xưng tội trong mùa Chay không?',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+        {
+          title: 'Có buộc xưng tội trong mùa Chay không?',
+          date: '17:24 09/05/2021',
+          link: '#',
+        },
+      ])

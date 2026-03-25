@@ -1,27 +1,32 @@
 .socialFoot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
   li {
-    margin-bottom: 5px;
+    margin-bottom: 0;
   }
 
   a {
     display: flex;
     align-items: center;
-    color:$color-white-1;
-    font-size: 13px;
-    line-height: 21px;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: $color-white-1;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
   }
 
   i {
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
-    font-size: 15px;
-    line-height: 23px;
-    position: relative;
-
-    &:before{
-      position: absolute;
-      @extend %pcc;
-    }
+    font-size: 14px;
   }
 }

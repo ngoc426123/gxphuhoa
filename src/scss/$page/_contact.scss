@@ -1,121 +1,228 @@
-.wrapContact {
-	padding: 15px 25px;
-	padding-top: 260px;
-  background-position: center top;
-  background-repeat: no-repeat;
-	background-size: contain;
+.contactPage {
+  &-map {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
-  @include mq(991) {
-    padding: 0;
-    background: none !important;
-  }
-}
-
-.map-contact{
-	margin-bottom: 25px;
-}
-
-.info-contact {
-	max-width: 300px;
-	margin: 0 auto;
-	margin-top: -190px;
-	border: solid 5px $color-white-1;
-
-  @include mq(991) {
-    max-width: initial;
-    margin: 0;
-    margin-bottom: 15px;
-    border: none;
-  }
-
-  .qrCode {
-    @include mq(991) {
-      display: none;
+    iframe {
+      display: block;
     }
   }
 
-  .info {
-    padding: 15px 20px;
-    padding-top: 0;
-    background: $color-white-1;
+  &-body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+    align-items: start;
 
-    @include mq(991) {
-      padding: 0;
+    @include mq(768) {
+      grid-template-columns: 1fr;
     }
   }
 
-  .name {
-    margin-bottom: 15px;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--main);
-    @extend %font-title;
-  }
+  &-info {
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    overflow: hidden;
 
-  .be {
-    padding-left: 20px;
-    margin-bottom: 10px;
-    position: relative;
+    &-header {
+      background: var(--main);
+      padding: 14px 18px;
+    }
 
-    &::before{
-      @extend %font-icon;
-      position: absolute;
-      top: 0;
-      left: 0;
+    &-name {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      text-transform: uppercase;
+      color: $color-white-1;
+      @extend %font-title;
+      margin: 0;
+    }
+
+    &-items {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    &-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 20px;
+      color: $color-black-2;
+
+      a {
+        color: var(--main);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &-icon {
+      width: 16px;
+      text-align: center;
       color: var(--main);
+      margin-top: 2px;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    &-qr {
+      padding: 0 18px 18px;
+      text-align: center;
+      border-top: 1px solid $color-border;
+      padding-top: 14px;
+
+      img {
+        width: 110px;
+        height: 110px;
+        display: block;
+        margin: 0 auto 6px;
+      }
+
+      p {
+        font-size: 11px;
+        color: $color-gray-2;
+        margin: 0;
+      }
     }
   }
 
-  
-}
+  &-form {
+    background: $color-white-1;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 20px 24px;
 
-.form-contact {
-  .txt-contact {
-    margin-bottom: 10px;
+    @include mq(576) {
+      padding: 16px;
+    }
+
+    &-intro {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--main);
+    }
+
+    &-title {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--main);
+      @extend %font-title;
+      margin: 0 0 6px;
+    }
 
     p {
-      padding: 0;
+      font-size: 13px;
       font-style: italic;
-      margin-bottom: 0;
+      color: $color-gray-2;
+      margin: 0;
     }
-  }
 
-  input,
-  textarea {
-    width: 100%;
-    height: 35px;
-    padding-left: 15px;
-    border: solid 1px rgba(0,0,0,0.15);
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  }
-
-  textarea {
-    height: 130px;
-    resize: none;
-  }
-
-  button {
-    width: 150px;
-    height: 35px;
-    font-size: 16px;
-    line-height: 24px;
-    color: $color-white-1;
-    font-weight: bold;
-    text-transform: uppercase;
-    @extend %font-title;
-    border:none;
-    background: var(--main);
-    transition: all 0.3s linear;
-
-    &:hover{
-      background: var(--light);
+    &-body {
+      display: block;
     }
-  }
 
-  .df {
-    display: flex;
-    align-items: center;
+    &-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+
+      @include mq(576) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &-group {
+      margin-bottom: 14px;
+
+      label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: $color-black-2;
+        margin-bottom: 5px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        height: 38px;
+        padding: 0 12px;
+        border: 1px solid $color-border;
+        border-radius: 5px;
+        font-size: 13px;
+        color: $color-black-2;
+        background: $color-gray-1;
+        transition: border-color 0.2s, background 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: var(--main);
+          background: $color-white-1;
+          box-shadow: 0 0 0 3px rgba(26, 95, 168, 0.08);
+        }
+      }
+
+      textarea {
+        height: 120px;
+        padding: 10px 12px;
+        resize: vertical;
+      }
+    }
+
+    &-captcha {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      input {
+        flex: 1;
+      }
+
+      img {
+        height: 38px;
+        border-radius: 4px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+    }
+
+    &-submit {
+      margin-top: 4px;
+      text-align: right;
+
+      button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 24px;
+        height: 40px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $color-white-1;
+        background: var(--main);
+        border: none;
+        border-radius: 5px;
+        @extend %font-title;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+          background: var(--dark);
+        }
+      }
+    }
   }
 }

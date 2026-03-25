@@ -8,12 +8,14 @@
 
     a {
       display: block;
-      padding-top: 66.666666%;
-      position: relative;
       overflow: hidden;
-      background-position: top center;
-      background-size: cover;
-      background-repeat: no-repeat;
+
+      img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+      }
     }
   }
 
@@ -37,7 +39,6 @@
   }
 
   .date {
-    display: inline-block;
     padding-left: 15px;
     font-size: 11px;
     line-height: 17px;
@@ -89,10 +90,6 @@
         overflow: hidden;
       }
     }
-
-    .date {
-      margin-bottom: 0;
-    }
   }
 
   .audioHome & {
@@ -104,7 +101,7 @@
   .listNote & {
     &:not(:last-child) {
       padding-bottom: 10px;
-      border-bottom: solid 1px $color-gray-1;
+      border-bottom: 1px solid $color-border;
     }
 
     .tend {
@@ -117,10 +114,6 @@
   .newsCategory & {
     .img {
       margin-bottom: 5px;
-
-      a {
-        padding-top: 62.6667%;
-      }
     }
 
     .tend {

@@ -1,93 +1,73 @@
 #gx-footer
   #footerMain
     .wrapper
-      .row
-        .col-12.col-lg-4
-          .boxBot
-            .title Ban truyền thông giáo xứ Phú Hòa
-            .content
-              .addressFoot
-                .be.fa-home 19/2 Hoàng Xuân Nhị, P. Phú Trung, Q. Tân Phú, Tp. HCM
-                .be.fa-envelope
-                  a(href="mailto: mvttgxphuhoa@gmail.com") mvttgxphuhoa@gmail.com 
-                .be.fa-globe
-                  a(href="http://gxphuhoa.org") http://gxphuhoa.org
-        .col-12.col-lg-8.d-none.d-lg-block
-          .row
-            .col
-              .boxBot
-                .title Ban truyền thông giáo xứ Phú Hòa
-                .content
-                  .botLink
-                    +list([
-                      {
-                        title: 'Trang chủ',
-                        href: '#'
-                      },
-                      {
-                        title: 'Giới thiệu',
-                        href: '#'
-                      },
-                      {
-                        title: 'Thư viện ảnh',
-                        href: '#'
-                      },
-                      {
-                        title: 'Lưu trữ',
-                        href: '#'
-                      },
-                      {
-                        title: 'Liên hệ',
-                        href: '#'
-                      },
-                    ])
-            .col
-              .boxBot
-                .title Mạng xã hội
-                .content
-                  .socialFoot
-                    +list([
-                      {
-                        title: 'facebook',
-                        href: '#',
-                        icon: 'fab fa-facebook'
-                      },
-                      {
-                        title: 'Twitter',
-                        href: '#',
-                        icon: 'fab fa-twitter'
-                      },
-                      {
-                        title: 'Google',
-                        href: '#',
-                        icon: 'fab fa-google'
-                      },
-                      {
-                        title: 'Youtube',
-                        href: '#',
-                        icon: 'fab fa-youtube'
-                      },
-                    ])
-            .col
-              .boxBot
-                .title Hỗ trợ độc giả
-                .content
-                  .hotlineFoot
-                    .title Hỗ trợ nội dung
-                    .hotline
-                      +link("hotline", "tel:0903378512")
-                        span 090.337.8512
-                    .title Hỗ trợ hình ảnh
-                    .hotline
-                      +link("hotline", "tel:0903378512")
-                        span 090.337.8512
-                    .title Hỗ trợ kỹ thuật
-                    .hotline
-                      +link("hotline", "tel:0373996947")
-                        span 0373.996.947
+      .footerGrid
+        //- Col 1: Brand
+        .footerCol.footerCol--brand
+          a.footerBrand(href="index.html" title="Giáo Xứ Phú Hòa")
+            img(src="images/logo.png" alt="Giáo Xứ Phú Hòa")
+            .footerBrand-name
+              span.footerBrand-top Giáo Xứ
+              span.footerBrand-bot PHÚ HOÀ
+          p.footerTagline Ban truyền thông Giáo xứ Phú Hòa – Giáo hạt Tân Sơn Nhì, Tổng Giáo phận TP.HCM.
+          .footerSocialLinks
+            a.footerSocialLinks-item(href="#" title="Facebook" aria-label="Facebook")
+              i.fab.fa-facebook-f
+            a.footerSocialLinks-item(href="#" title="Youtube" aria-label="Youtube")
+              i.fab.fa-youtube
+            a.footerSocialLinks-item(href="#" title="Twitter" aria-label="Twitter")
+              i.fab.fa-twitter
+            a.footerSocialLinks-item(href="#" title="Google" aria-label="Google")
+              i.fab.fa-google
+
+        //- Col 2: Sitemap
+        .footerCol
+          h4.footerCol-title Điều hướng
+          ul.footerLinks
+            li: a(href="index.html") Trang chủ
+            li: a(href="about.html") Giới thiệu
+            li: a(href="category.html") Thư viện ảnh
+            li: a(href="category.html") Lưu trữ
+            li: a(href="contact.html") Liên hệ
+
+        //- Col 3: Contact
+        .footerCol
+          h4.footerCol-title Liên hệ
+          .footerAddress
+            .footerAddress-row
+              i.fas.fa-map-marker-alt
+              span 19/2 Hoàng Xuân Nhị, P. Phú Trung, Q. Tân Phú, TP. HCM
+            .footerAddress-row
+              i.fas.fa-envelope
+              a(href="mailto:mvttgxphuhoa@gmail.com") mvttgxphuhoa@gmail.com
+            .footerAddress-row
+              i.fas.fa-globe
+              a(href="http://gxphuhoa.org") gxphuhoa.org
+
+        //- Col 4: Hotline
+        .footerCol
+          h4.footerCol-title Hỗ trợ
+          .footerHotline
+            .footerHotline-group
+              span.footerHotline-label Hỗ trợ nội dung
+              a.footerHotline-num(href="tel:0903378512")
+                i.fas.fa-phone-alt
+                span 090.337.8512
+            .footerHotline-group
+              span.footerHotline-label Hỗ trợ hình ảnh
+              a.footerHotline-num(href="tel:0903378512")
+                i.fas.fa-phone-alt
+                span 090.337.8512
+            .footerHotline-group
+              span.footerHotline-label Hỗ trợ kỹ thuật
+              a.footerHotline-num(href="tel:0373996947")
+                i.fas.fa-phone-alt
+                span 0373.996.947
+
   #footerBot
     .wrapper
-      .copyright
-        .be Power by <a href="http://wordpress.org">Wordpress</a>
-        .be Design by <a href="mailto:minhngoc.ith@gmail.com">minhngoc.ith</a>
+      .footerBottom
+        span © 2024 Giáo Xứ Phú Hoà. All rights reserved.
+        span Ban truyền thông
+          a(href="http://gxphuhoa.org")  Giáo Xứ Phú Hoà
 

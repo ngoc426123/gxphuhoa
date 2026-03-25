@@ -59,16 +59,18 @@ export default class Category {
 
   renderItem (data) {
     data.forEach(item => {
-      const tmp = `<div class="news v2">
-                    <div class="img">
-                      <a href="${item.link}" title="${item.title}" style="background-image:url(${item.img});"></a>
-                    </div>
-                    <div class="caption">
-                      <div class="date">${item.date}</div>
-                      <div class="cat">${item.cat}</div>
-                      <div class="tend"><a href="${item.link}" title="${item.title}">${item.title}</a>
+      const catName = (item.cat && item.cat.length > 0) ? item.cat[0].name : '';
+      const tmp = `<div class="catNewsRow">
+                    <a class="catNewsRow-img" href="${item.link}" title="${item.title}">
+                      <img src="${item.img}" alt="${item.title}">
+                    </a>
+                    <div class="catNewsRow-body">
+                      <div class="catNewsRow-meta">
+                        <span class="catNewsRow-cat">${catName}</span>
+                        <span class="catNewsRow-date"><i class="far fa-clock"></i> ${item.date}</span>
                       </div>
-                      <div class="des">${item.des}</div>
+                      <a class="catNewsRow-title" href="${item.link}">${item.title}</a>
+                      <p class="catNewsRow-des">${item.des}</p>
                     </div>
                   </div>`;
       this.$listNews.append(tmp);

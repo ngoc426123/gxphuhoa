@@ -38,7 +38,6 @@
 .topbar-nav {
   display: flex;
   align-items: center;
-  gap: 4px;
 
   a {
     padding: 0 10px;
@@ -51,6 +50,10 @@
     display: flex;
     align-items: center;
     transition: color 0.2s;
+
+    @include mq(768) {
+      padding: 0 5px;
+    }
 
     &:hover {
       color: #fff;

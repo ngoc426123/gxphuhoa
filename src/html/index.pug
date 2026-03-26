@@ -8,76 +8,80 @@ block main-content
     .swiper.heroBanner-swiper
       .swiper-wrapper
 
-        //- ── SLIDE 1: .is-glass — card mờ tối, góc dưới trái ──
+        //- ── SLIDE 1: .is-glass — image trái | text phải, nền tối ──
         .swiper-slide.heroBanner-slide.is-glass
-          .heroBanner-img
-            img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg' alt='THÁNH LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO XỨ VÀ HĐMV')
-          a.heroBanner-card(href='single.html' title='THÁNH LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO XỨ VÀ HĐMV')
-            span.heroBanner-tag
-              i.fas.fa-bookmark
-              |  Tin Giáo Xứ
-            h2.heroBanner-title THÁNH LỄ KÍNH THÁNH GIUSE : MỪNG BỔN MẠNG GIÁO XỨ VÀ HỘI ĐỒNG MỤC VỤ NĂM B
-            .heroBanner-meta
-              i.far.fa-clock
-              span 06:00 01/05/2021
-            .heroBanner-cta
-              span Đọc bài viết
-              i.fas.fa-arrow-right
+          .heroBanner-inner
+            .heroBanner-img
+              img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/BMGx-va-Hdmv-Phu-Hoa-01-05-2021-14-570x320.jpg' alt='THÁNH LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO XỨ VÀ HĐMV')
+            a.heroBanner-card(href='single.html' title='THÁNH LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO XỨ VÀ HĐMV')
+              span.heroBanner-tag
+                i.fas.fa-bookmark
+                |  Tin Giáo Xứ
+              h2.heroBanner-title THÁNH LỄ KÍNH THÁNH GIUSE : MỪNG BỔN MẠNG GIÁO XỨ VÀ HỘI ĐỒNG MỤC VỤ NĂM B
+              .heroBanner-meta
+                i.far.fa-clock
+                span 06:00 01/05/2021
+              .heroBanner-cta
+                span Đọc bài viết
+                i.fas.fa-arrow-right
 
-        //- ── SLIDE 2: .is-gradient — gradient phủ dưới, text nổi ──
+        //- ── SLIDE 2: .is-gradient — image trái | text phải, navy gradient ──
         .swiper-slide.heroBanner-slide.is-gradient
-          .heroBanner-img
-            img(src='https://gxphuhoa.org/wp-content/uploads/2020/08/cau-nguyen-voi-phuc-am-2-469x352.jpg' alt='Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B')
-          a.heroBanner-card(href='single.html' title='Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B')
-            span.heroBanner-tag
-              i.fas.fa-cross
-              |  Suy Niệm
-            h2.heroBanner-title Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B : Thinh lặng lắng nghe tiếng Thiên Chúa
-            .heroBanner-meta
-              i.far.fa-clock
-              span 08:00 22/05/2021
-            .heroBanner-cta
-              span Đọc bài viết
-              i.fas.fa-arrow-right
+          .heroBanner-inner
+            .heroBanner-img
+              img(src='https://gxphuhoa.org/wp-content/uploads/2020/08/cau-nguyen-voi-phuc-am-2-469x352.jpg' alt='Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B')
+            a.heroBanner-card(href='single.html' title='Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B')
+              span.heroBanner-tag
+                i.fas.fa-cross
+                |  Suy Niệm
+              h2.heroBanner-title Cầu nguyện với Phúc Âm – Thứ Bảy Tuần 6 Phục Sinh B : Thinh lặng lắng nghe tiếng Thiên Chúa
+              .heroBanner-meta
+                i.far.fa-clock
+                span 08:00 22/05/2021
+              .heroBanner-cta
+                span Đọc bài viết
+                i.fas.fa-arrow-right
 
-        //- ── SLIDE 3: .is-duotone — color overlay, text căn giữa ──
+        //- ── SLIDE 3: .is-duotone — image (tint) trái | text phải ──
         .swiper-slide.heroBanner-slide.is-duotone
-          .heroBanner-img
-            img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/thu-bay-tuan-6-PS_B-570x336.jpg' alt='Thứ Bảy Tuần VI Phục Sinh: Ân Sủng Và Sự Thật')
-          a.heroBanner-card(href='single.html' title='Thứ Bảy Tuần VI Phục Sinh: Ân Sủng Và Sự Thật')
-            span.heroBanner-tag
-              i.fas.fa-bell
-              |  Thông Báo
-            h2.heroBanner-title Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh Giáo Xứ Phú Hoa
-            .heroBanner-meta
-              i.far.fa-clock
-              span 07:30 20/05/2020
-            .heroBanner-cta
-              span Đọc bài viết
-              i.fas.fa-arrow-right
+          .heroBanner-inner
+            .heroBanner-img
+              img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/thu-bay-tuan-6-PS_B-570x336.jpg' alt='Thứ Bảy Tuần VI Phục Sinh: Ân Sủng Và Sự Thật')
+            a.heroBanner-card(href='single.html' title='Thứ Bảy Tuần VI Phục Sinh: Ân Sủng Và Sự Thật')
+              span.heroBanner-tag
+                i.fas.fa-bell
+                |  Thông Báo
+              h2.heroBanner-title Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh Giáo Xứ Phú Hoa
+              .heroBanner-meta
+                i.far.fa-clock
+                span 07:30 20/05/2020
+              .heroBanner-cta
+                span Đọc bài viết
+                i.fas.fa-arrow-right
 
-        //- ── SLIDE 4: .is-bright — card sáng, góc trên phải ──
+        //- ── SLIDE 4: .is-bright — image PHẢI | text trái, nền trắng ──
         .swiper-slide.heroBanner-slide.is-bright
-          .heroBanner-img
-            img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/THANH-GIUSE-THO-01-05-570x321.jpg' alt='Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ')
-          a.heroBanner-card(href='single.html' title='Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ')
-            span.heroBanner-tag
-              i.fas.fa-church
-              |  Nổi Bật
-            h2.heroBanner-title Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ và Hội Đồng Mục Vụ Năm B
-            .heroBanner-meta
-              i.far.fa-clock
-              span 06:00 01/05/2021
-            .heroBanner-cta
-              span Đọc bài viết
-              i.fas.fa-arrow-right
+          .heroBanner-inner
+            .heroBanner-img
+              img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/THANH-GIUSE-THO-01-05-570x321.jpg' alt='Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ')
+            a.heroBanner-card(href='single.html' title='Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ')
+              span.heroBanner-tag
+                i.fas.fa-church
+                |  Nổi Bật
+              h2.heroBanner-title Mừng kính Thánh Giuse Thợ Bổn mạng Giáo xứ và Hội Đồng Mục Vụ Năm B
+              .heroBanner-meta
+                i.far.fa-clock
+                span 06:00 01/05/2021
+              .heroBanner-cta
+                span Đọc bài viết
+                i.fas.fa-arrow-right
 
-        //- ── SLIDE 5: .is-ribbon — dải text mỏng dưới ảnh, CTA bên phải ──
+        //- ── SLIDE 5: .is-ribbon — image trái | text phải, deep dark ──
         .swiper-slide.heroBanner-slide.is-ribbon
-          .heroBanner-img
-            img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/thu-sau-tuan-6-PS-B-570x323.jpg' alt='Thứ Sáu Tuần VI Phục Sinh: Mátthia – Ơn Gọi Đặc Biệt')
-          a.heroBanner-card(href='single.html' title='Thứ Sáu Tuần VI Phục Sinh: Mátthia – Ơn Gọi Đặc Biệt')
-            .heroBanner-body
+          .heroBanner-inner
+            .heroBanner-img
+              img(src='https://gxphuhoa.org/wp-content/uploads/2021/05/thu-sau-tuan-6-PS-B-570x323.jpg' alt='Thứ Sáu Tuần VI Phục Sinh: Mátthia – Ơn Gọi Đặc Biệt')
+            a.heroBanner-card(href='single.html' title='Thứ Sáu Tuần VI Phục Sinh: Mátthia – Ơn Gọi Đặc Biệt')
               span.heroBanner-tag
                 i.fas.fa-pray
                 |  Suy Niệm
@@ -85,15 +89,17 @@ block main-content
               .heroBanner-meta
                 i.far.fa-clock
                 span 08:00 21/05/2021
-            .heroBanner-cta
-              span Đọc bài viết
-              i.fas.fa-arrow-right
+              .heroBanner-cta
+                span Đọc bài viết
+                i.fas.fa-arrow-right
 
-      //- Controls: pagination + prev/next trong 1 row góc dưới phải
+      //- Controls: pagination + prev/pause/next trong 1 row góc dưới phải
       .heroBanner-controls
         .heroBanner-pagination
         .heroBanner-prev
           i.fas.fa-chevron-left
+        .heroBanner-pause
+          i.fas.fa-pause
         .heroBanner-next
           i.fas.fa-chevron-right
   //- ============================================================

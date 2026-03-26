@@ -17,6 +17,7 @@ export default class HeroBannerSlider {
     this.$prev     = this.$element.find('.heroBanner-prev');
     this.$next     = this.$element.find('.heroBanner-next');
     this.$pag      = this.$element.find('.heroBanner-pagination');
+    this.$pause    = this.$element.find('.heroBanner-pause');
   }
 
   initSwiper() {
@@ -24,9 +25,8 @@ export default class HeroBannerSlider {
       modules: [Autoplay, Pagination, Navigation],
       loop: true,
       speed: 700,
-      autoHeight: true,
       autoplay: {
-        delay: 5000,
+        delay: 6000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
@@ -38,6 +38,20 @@ export default class HeroBannerSlider {
         prevEl: this.$prev[0],
         nextEl: this.$next[0],
       },
+    });
+    this.initPause();
+  }
+
+  initPause() {
+    this.$pause.on('click', () => {
+      const $icon = this.$pause.find('i');
+      if (this.swiper.autoplay.running) {
+        this.swiper.autoplay.stop();
+        $icon.removeClass('fa-pause').addClass('fa-play');
+      } else {
+        this.swiper.autoplay.start();
+        $icon.removeClass('fa-play').addClass('fa-pause');
+      }
     });
   }
 }

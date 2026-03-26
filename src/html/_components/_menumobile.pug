@@ -10,6 +10,10 @@
         button.mmClose(type="button" aria-label="Đóng menu")
           i.fa-solid.fa-xmark
       .mmBody
+        form.mmSearch(action="search.html" method="get")
+          input.mmSearch__input(type="search" name="s" placeholder="Tìm kiếm bài viết...")
+          button.mmSearch__btn(type="submit")
+            i.fas.fa-search
         nav.mmNav
           +list([
             {

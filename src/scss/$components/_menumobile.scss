@@ -121,6 +121,57 @@
     flex-direction: column;
   }
 
+  // ── SEARCH ──────────────────────────────────────────
+  .mmSearch {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid $color-border;
+    flex-shrink: 0;
+
+    &__input {
+      flex: 1;
+      height: 36px;
+      padding: 0 12px;
+      border: 1.5px solid $color-border;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 14px;
+      color: $color-black-2;
+      background: $color-gray-3;
+      outline: none;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: var(--main);
+        background: $color-white-1;
+      }
+
+      &::placeholder {
+        color: $color-gray-2;
+      }
+    }
+
+    &__btn {
+      height: 36px;
+      width: 40px;
+      background: var(--main);
+      color: $color-white-1;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+
+      &:hover {
+        background: var(--dark);
+      }
+    }
+  }
+
   // ── NAV ─────────────────────────────────────────────
   .mmNav {
     flex: 1;

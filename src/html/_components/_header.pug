@@ -17,7 +17,18 @@
           span.site-name-top Giáo Xứ
           span.site-name-bot PHÚ HOÀ
 
-    nav.header-nav
+    form.header-search(action="search.html" method="get")
+      input.header-search__input(type="search" name="s" placeholder="Tìm kiếm bài viết...")
+      button.header-search__btn(type="submit")
+        i.fas.fa-search
+
+    .header-actions
+      .iconMenu
+        .styleMenu
+
+#gx-navbar
+  .navbar-inner
+    nav.navbar-nav
       +list([
         {
           title: 'Thông tin',
@@ -52,7 +63,3 @@
           href: 'fathers.html',
         },
       ])
-
-    .header-actions
-      .iconMenu
-        .styleMenu

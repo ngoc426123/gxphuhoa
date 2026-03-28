@@ -122,6 +122,25 @@ h2.loiChuaHome-title {
   color: var(--lc-white);
 }
 
+/* Saturday — subtle warm tint */
+.loiChuaHome-day.is-saturday .loiChuaHome-day-name {
+  color: rgba(245, 201, 122, 0.75);
+}
+.loiChuaHome-day.is-saturday .loiChuaHome-day-date {
+  color: rgba(245, 201, 122, 0.85);
+}
+
+/* Sunday — gold, most prominent */
+.loiChuaHome-day.is-sunday .loiChuaHome-day-name {
+  color: var(--lc-gold);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+.loiChuaHome-day.is-sunday .loiChuaHome-day-date {
+  color: var(--lc-gold);
+  font-size: 13px;
+}
+
 .loiChuaHome-day.is-today .loiChuaHome-day-name::after {
   content: '•';
   display: block;
@@ -187,6 +206,41 @@ h2.loiChuaHome-title {
   color: var(--lc-white);
 }
 
+/* ── Hint (shown before any day is selected) ──────────────── */
+.loiChuaHome-hint {
+  margin: 0;
+  padding: 18px 20px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.loiChuaHome-hint .fas {
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+/* ── Attribution footer ───────────────────────────────────── */
+.loiChuaHome-attribution {
+  margin: 0;
+  padding: 8px 20px 12px;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.5;
+}
+
+.loiChuaHome-attribution a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+
+.loiChuaHome-attribution a:hover {
+  color: var(--lc-gold);
+  text-decoration: underline;
+}
+
 /* ── Detail panel ─────────────────────────────────────────── */
 .loiChuaHome-detail {
   background: #faf8f5;
@@ -227,6 +281,26 @@ h2.loiChuaHome-title {
   font-size: 11px;
   color: #777;
   margin: 0;
+}
+
+.loiChuaHome-preamble {
+  font-family: var(--lc-font-scripture);
+  text-align: center;
+  padding: 8px 0 12px;
+  border-bottom: 1px solid var(--lc-border);
+  margin-bottom: 12px;
+}
+.loiChuaHome-preamble p {
+  margin: 0 0 2px;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.5;
+}
+.loiChuaHome-preamble p:last-child { margin-bottom: 0; }
+.loiChuaHome-preamble b {
+  font-weight: 700;
+  color: var(--lc-primary);
+  font-size: 14px;
 }
 
 .loiChuaHome-keyverse {
@@ -405,6 +479,22 @@ h2.loiChuaHome-title {
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
+
+/* Fallback when parseSections finds no structured sections */
+.loiChuaHome-raw {
+  margin-bottom: 14px;
+  padding: 12px 16px;
+  font-family: var(--lc-font-scripture);
+  font-size: 14px;
+  line-height: 1.85;
+  color: #2a2a2a;
+  background: #fdfcfb;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.loiChuaHome-raw p { margin: 0 0 8px; }
+.loiChuaHome-raw p:last-child { margin-bottom: 0; }
 
 .loiChuaSection {
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);

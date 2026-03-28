@@ -81,9 +81,9 @@ export default function LoiChuaHangNgay() {
           <>
             <WeekStrip items={items} activeIdx={activeIdx} onSelect={handleSelect} />
             {!revealed && (
-              <p className="loiChuaHome-hint">
+              <div className="loiChuaHome-hint">
                 <i className="fas fa-hand-pointer" /> Chọn một ngày để xem Lời Chúa
-              </p>
+              </div>
             )}
             {revealed && <DayDetail item={items[activeIdx]} />}
           </>

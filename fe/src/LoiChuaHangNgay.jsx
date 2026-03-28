@@ -99,13 +99,13 @@ export default function LoiChuaHangNgay() {
         )}
       </div>
 
-      <p className="loiChuaHome-attribution">
+      <div className="loiChuaHome-attribution">
         Nội dung được sử dụng với sự cho phép của{' '}
         <a href="https://www.vaticannews.va/vi.html" target="_blank" rel="noopener noreferrer">
           Vatican News Tiếng Việt
         </a>
         . Xin chân thành cảm ơn.
-      </p>
+      </div>
     </div>
   );
 }

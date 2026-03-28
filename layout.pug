@@ -1,0 +1,85 @@
+//- ============================================================
+  //- LỜI CHÚA HÀNG NGÀY — Vatican News RSS (Tuần phụng vụ)
+  //- ============================================================
+  .loiChuaHome(data-loi-chua-home)
+    .loiChuaHome-head
+      .loiChuaHome-head-left
+        span.loiChuaHome-cross ✝
+        h2.loiChuaHome-title Lời Chúa Hàng Ngày
+      a.loiChuaHome-source(href="https://www.vaticannews.va/vi/loi-chua-hang-ngay.html" target="_blank" rel="noopener noreferrer")
+        | Vatican News&nbsp;
+        i.fas.fa-external-link-alt
+    .loiChuaHome-body(data-loi-chua-body)
+      //- ── WEEK TAB STRIP ─────────────────────────────────────
+      .loiChuaHome-week
+        button.loiChuaHome-day(data-day-idx="0" title="Lễ Truyền Tin")
+          span.loiChuaHome-day-name T4
+          span.loiChuaHome-day-date 25/03
+          span.loiChuaHome-day-audio
+            i.fas.fa-headphones
+          span.loiChuaHome-day-dot
+        button.loiChuaHome-day(data-day-idx="1" title="Thứ Năm Tuần V - Mùa Chay")
+          span.loiChuaHome-day-name T5
+          span.loiChuaHome-day-date 26/03
+          span.loiChuaHome-day-audio
+            i.fas.fa-headphones
+          span.loiChuaHome-day-dot
+        button.loiChuaHome-day.is-active.is-today(data-day-idx="2" title="Thứ Sáu Tuần V - Mùa Chay")
+          span.loiChuaHome-day-name T6
+          span.loiChuaHome-day-date 27/03
+          span.loiChuaHome-day-audio
+            i.fas.fa-headphones
+          span.loiChuaHome-day-dot
+        button.loiChuaHome-day(data-day-idx="3" title="Thứ Bảy Tuần V - Mùa Chay")
+          span.loiChuaHome-day-name T7
+          span.loiChuaHome-day-date 28/03
+          span.loiChuaHome-day-audio
+            i.fas.fa-headphones
+          span.loiChuaHome-day-dot
+        button.loiChuaHome-day(data-day-idx="4" title="Chúa Nhật Lễ Lá")
+          span.loiChuaHome-day-name CN
+          span.loiChuaHome-day-date 29/03
+          span.loiChuaHome-day-audio.is-empty -
+          span.loiChuaHome-day-dot
+        button.loiChuaHome-day(data-day-idx="5" title="Thứ Hai Tuần Thánh")
+          span.loiChuaHome-day-name T2
+          span.loiChuaHome-day-date 30/03
+          span.loiChuaHome-day-audio.is-empty -
+          span.loiChuaHome-day-dot
+        button.loiChuaHome-day(data-day-idx="6" title="Thứ Ba Tuần Thánh")
+          span.loiChuaHome-day-name T3
+          span.loiChuaHome-day-date 31/03
+          span.loiChuaHome-day-audio.is-empty -
+          span.loiChuaHome-day-dot
+
+      //- ── DETAIL PANEL (selected day) ────────────────────────
+      .loiChuaHome-detail(data-lc-detail)
+        .loiChuaHome-detail-top
+          p.loiChuaHome-liturgy Thứ Sáu Tuần V - Mùa Chay
+          p.loiChuaHome-date-label Thứ sáu, 27 tháng 3, 2026
+        p.loiChuaHome-keyverse
+          | &ldquo;Đức Chúa hằng ở bên con như một trang chiến sĩ oai hùng.&rdquo;
+        .loiChuaHome-readings
+          .loiChuaHome-reading
+            span.loiChuaHome-reading-icon 📖
+            span Bài đọc 1 &nbsp;&nbsp;&nbsp; Gr 20,10-13
+          .loiChuaHome-reading
+            span.loiChuaHome-reading-icon ♩
+            span Đáp ca &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tv 17,2-3a.3bc-4.5-6.7
+          .loiChuaHome-reading
+            span.loiChuaHome-reading-icon ✠
+            span ✠Tin Mừng Chúa Giê-su Ki-tô theo thánh Gio-an. &nbsp; Ga 10,31-42
+        .loiChuaHome-player(data-lc-player)
+          audio(preload="none")
+            source(src="https://media.vaticannews.va/media2/audio/s1/2026/03/24/10/139065287_F139065287.mp3" type="audio/mp3")
+          button.loiChuaHome-player-btn(data-lc-play aria-label="Phát/Dừng")
+            i.fas.fa-play
+          .loiChuaHome-player-track
+            .loiChuaHome-player-bar
+              .loiChuaHome-player-fill(data-lc-fill)
+            input.loiChuaHome-player-range(type="range" min="0" max="100" value="0" step="0.1" data-lc-range)
+          span.loiChuaHome-player-time(data-lc-time) 0:00
+          span.loiChuaHome-player-total &nbsp;/ 11:31
+        a.loiChuaHome-cta(href="https://www.vaticannews.va/vi/loi-chua-hang-ngay/2026/03/27.html" target="_blank" rel="noopener noreferrer")
+          | Đọc bài đọc đầy đủ&nbsp;
+          i.fas.fa-external-link-alt

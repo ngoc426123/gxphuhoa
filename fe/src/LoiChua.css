@@ -1,0 +1,556 @@
+/* Lora — classical serif, excellent Vietnamese support, designed for body/scripture text */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+/* ============================================================
+   LỜI CHÚA HÀNG NGÀY — Tuần phụng vụ tab view
+   Converted from style.scss (no preprocessor)
+   ============================================================ */
+
+/* Variables as CSS custom properties */
+:root {
+  --lc-gold:  #f5c97a;
+  --lc-bg:    #a31400;
+  --lc-bg2:   #5e0900;
+  --lc-white: #ffffff;
+  --lc-font-scripture: 'Lora', Georgia, 'Times New Roman', serif;
+}
+
+.loiChuaHome {
+  margin-bottom: 20px;
+  background: linear-gradient(160deg, var(--lc-bg) 0%, var(--lc-bg2) 100%);
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 20px 20px 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .loiChuaHome {
+    padding: 14px 14px 0;
+  }
+}
+
+/* ── Head ─────────────────────────────────────────────────── */
+.loiChuaHome-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+}
+
+.loiChuaHome-head-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2.loiChuaHome-title {
+  font-size: 15px;
+  color: var(--lc-white);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.loiChuaHome-cross {
+  font-size: 20px;
+  color: var(--lc-gold);
+  line-height: 1;
+}
+
+.loiChuaHome-source {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.loiChuaHome-source:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.loiChuaHome-source i {
+  font-size: 10px;
+}
+
+/* ── Week tab strip ───────────────────────────────────────── */
+.loiChuaHome-week {
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loiChuaHome-day {
+  flex: 1;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  padding: 10px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  transition: background 0.18s;
+}
+
+.loiChuaHome-day:last-child {
+  border-right: none;
+}
+
+.loiChuaHome-day:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.loiChuaHome-day.is-active {
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.loiChuaHome-day.is-active .loiChuaHome-day-dot {
+  background: var(--lc-gold);
+  box-shadow: 0 0 0 3px rgba(245, 201, 122, 0.22);
+}
+
+.loiChuaHome-day.is-active .loiChuaHome-day-name {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.loiChuaHome-day.is-active .loiChuaHome-day-date {
+  color: var(--lc-white);
+}
+
+.loiChuaHome-day.is-today .loiChuaHome-day-name::after {
+  content: '•';
+  display: block;
+  text-align: center;
+  color: var(--lc-gold);
+  font-size: 8px;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.loiChuaHome-day-name {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.loiChuaHome-day-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.97);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.loiChuaHome-day-audio {
+  font-size: 9px;
+  color: rgba(245, 201, 122, 0.8);
+  height: 12px;
+  line-height: 12px;
+}
+
+.loiChuaHome-day-audio.is-empty {
+  opacity: 0;
+}
+
+.loiChuaHome-day-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.2s;
+}
+
+/* ── Empty state ──────────────────────────────────────────── */
+.loiChuaHome-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 20px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+}
+
+.loiChuaHome-empty a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: underline;
+}
+
+.loiChuaHome-empty a:hover {
+  color: var(--lc-white);
+}
+
+/* ── Detail panel ─────────────────────────────────────────── */
+.loiChuaHome-detail {
+  background: #faf8f5;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0 -20px;
+  padding: 18px 20px 24px;
+}
+
+@media (max-width: 768px) {
+  .loiChuaHome-detail {
+    margin: 0 -14px;
+    padding: 14px 14px 18px;
+  }
+}
+
+.loiChuaHome-detail-top {
+  margin-bottom: 10px;
+}
+
+.loiChuaHome-liturgy {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 3px;
+  line-height: 1.4;
+  font-family: var(--lc-font-scripture);
+}
+
+.loiChuaHome-liturgy em {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 400;
+  color: #888;
+  margin-left: 6px;
+}
+
+.loiChuaHome-date-label {
+  font-size: 11px;
+  color: #777;
+  margin: 0;
+}
+
+.loiChuaHome-keyverse {
+  font-style: italic;
+  color: #444;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+  padding-left: 10px;
+  border-left: 3px solid var(--lc-bg);
+}
+
+/* ── Readings ─────────────────────────────────────────────── */
+.loiChuaHome-readings {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.loiChuaHome-reading {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.loiChuaHome-reading-icon {
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+  color: var(--lc-bg);
+  font-size: 13px;
+  margin-top: 1px;
+}
+
+/* ── Audio player ─────────────────────────────────────────── */
+.loiChuaHome-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 480px) {
+  .loiChuaHome-player {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+}
+
+.loiChuaHome-player-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--lc-bg);
+  background: none;
+  color: var(--lc-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.18s, color 0.18s;
+  font-size: 12px;
+}
+
+.loiChuaHome-player-btn i {
+  margin-left: 1px;
+}
+
+.loiChuaHome-player-btn:hover {
+  background: var(--lc-bg);
+  color: var(--lc-white);
+}
+
+.loiChuaHome-player-track {
+  flex: 1;
+  position: relative;
+  padding: 6px 0;
+}
+
+.loiChuaHome-player-bar {
+  position: relative;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
+
+.loiChuaHome-player-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--lc-bg);
+  border-radius: 2px;
+  pointer-events: none;
+  width: 0%;
+}
+
+.loiChuaHome-player-range {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  opacity: 0;
+  height: 14px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.loiChuaHome-player-time {
+  font-size: 12px;
+  color: #666;
+  flex-shrink: 0;
+  min-width: 32px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.loiChuaHome-player-total {
+  font-size: 11px;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* ── CTA link ─────────────────────────────────────────────── */
+.loiChuaHome-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+}
+
+.loiChuaHome-cta:hover {
+  color: var(--lc-bg);
+}
+
+.loiChuaHome-cta i {
+  font-size: 10px;
+}
+
+/* ── Loading / error states ───────────────────────────────── */
+.loiChuaHome-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  gap: 10px;
+}
+
+.loiChuaHome-error {
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ── Section accordion ────────────────────────────────────── */
+.loiChuaHome-sections {
+  margin-bottom: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.loiChuaSection {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.loiChuaSection:last-child {
+  border-bottom: none;
+}
+
+.loiChuaSection-head {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.loiChuaSection-head:hover {
+  background: rgba(163, 20, 0, 0.05);
+}
+
+.loiChuaSection.is-open .loiChuaSection-head {
+  background: rgba(163, 20, 0, 0.06);
+}
+
+.loiChuaSection-icon {
+  flex-shrink: 0;
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+  color: var(--lc-bg);
+  margin-top: 1px;
+}
+
+.loiChuaSection--gospel .loiChuaSection-icon {
+  color: #8b0000;
+  font-style: normal;
+}
+
+.loiChuaSection-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.loiChuaSection-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.3;
+}
+
+.loiChuaSection--gospel .loiChuaSection-title {
+  color: #8b0000;
+}
+
+.loiChuaSection-ref {
+  font-size: 11px;
+  color: #777;
+  font-weight: 400;
+}
+
+.loiChuaSection-summary {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.45;
+  margin-top: 1px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.loiChuaSection-chevron {
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #aaa;
+  margin-top: 3px;
+  transition: color 0.15s;
+}
+
+.loiChuaSection-head:hover .loiChuaSection-chevron,
+.loiChuaSection.is-open .loiChuaSection-chevron {
+  color: var(--lc-bg);
+}
+
+/* ── Section body content ─────────────────────────────────── */
+.loiChuaSection-body {
+  padding: 4px 12px 14px 39px; /* align with text after icon */
+  font-size: 14px;
+  line-height: 1.85;
+  color: #2a2a2a;
+  background: #fdfcfb;
+  border-top: 1px dashed rgba(0, 0, 0, 0.07);
+  font-family: var(--lc-font-scripture);
+}
+
+.loiChuaSection-body p {
+  margin: 0 0 8px;
+}
+
+.loiChuaSection-body p:last-child {
+  margin-bottom: 0;
+}
+
+.loiChuaSection-body b {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Verse numbers in superscript */
+.loiChuaSection-body sup {
+  font-size: 9px;
+  color: #999;
+  vertical-align: super;
+  line-height: 0;
+  margin-right: 1px;
+}
+
+/* Italic: summary line / refrain */
+.loiChuaSection-body > p > i,
+.loiChuaSection-body p i {
+  color: #555;
+}
+
+/* Refrain lines (Đ.) */
+.loiChuaSection-body p:has(i) {
+  padding-left: 10px;
+  border-left: 2px solid rgba(163, 20, 0, 0.25);
+  margin-left: 0;
+}
+
+/* Gospel section body — slightly prominent */
+.loiChuaSection--gospel .loiChuaSection-body {
+  background: #fffaf8;
+}
+
+.loiChuaSection--gospel .loiChuaSection-body b {
+  color: #8b0000;
+}
+

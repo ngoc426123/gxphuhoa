@@ -22,13 +22,7 @@ export default function LoiChuaHangNgay() {
       .then(data => {
         if (cancelled) return;
         if (data.status !== 'ok') throw new Error('RSS feed error: ' + (data.message || 'unknown'));
-        const all = (data.items || []).slice(0, 7)
-          .sort((a, b) => {
-            const ta = itemDate(a).getTime();
-            const tb = itemDate(b).getTime();
-            if (isNaN(ta) || isNaN(tb)) return 0;
-            return ta - tb;
-          });
+        const all = (data.items || []).slice().reverse().slice(0, 7);
         setItems(all);
         const todayStr = new Date().toDateString();
         const idx = all.findIndex(it => itemDate(it).toDateString() === todayStr);

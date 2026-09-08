@@ -10,6 +10,7 @@ import './plugins/category'
 import './plugins/single'
 import './plugins/share'
 import './plugins/slidevideohome'
+import './plugins/herobannerslider'
 import './plugins/fathers'
 
 // API

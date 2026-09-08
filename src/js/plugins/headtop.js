@@ -6,9 +6,13 @@ export default class HeadTop {
   init() {
     $(".iAbout").fancybox({
       type: 'ajax',
-      toolsbar: false,
-      smallBtn: true,
-      baseClass: "introAbout",
+      toolbar: false,
+      smallBtn: false,
+      baseClass: 'introAbout',
+      animationEffect: 'fade',
+      animationDuration: 300,
+      buttons: [],
+      touch: false,
     });
   }
 }

@@ -4,12 +4,16 @@
 
   a {
     display: block;
-    padding-top: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
+    position: relative; // cần cho ::before overlay
     overflow: hidden;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
 
     &::before{
       content: "";
@@ -55,8 +59,8 @@
   }
 
   &.v2 {
-    a {
-      padding-top: 48.7%;
+    img {
+      aspect-ratio: 205 / 100; // ~48.7% height ratio
     }
   }
 }

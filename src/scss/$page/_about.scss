@@ -8,28 +8,38 @@
   .fancybox-content {
     width: 100%;
     height: 100%;
+    margin: 0 auto;
+    border-radius: 0;
+    padding: 0;
   }
 
-  button[data-fancybox-close] {
-    width:50px;
-    height:50px;
-    background-color: $color-black-1;
-    color: $color-white-1;
-    top: 0;
-    right: 0;
+  .fancybox-close-small {
+    display: none;
+  }
 
-    &::before{
-      font-size: 30px;
-      line-height: 30px;
-      content: "\f00d";
-      @extend %font-icon;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
+  // Nút đóng tùy chỉnh — góc trên phải
+  .introAbout-close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255,255,255,0.3);
     }
   }
-  
 }
 .introGiaoxu {
 	background-color: $color-black-1;

@@ -3,7 +3,7 @@
     pluginName: 'Menumobile',
     clsIconMenu: '.iconMenu',
     clsDivmm: '.divmm',
-    clsClose: '.close-mmenu',
+    clsClose: '.mmClose',
     clsOverlay: '.divmmbg',
     clsSubmenu: '.sub',
     clsOpenMenu: 'show',

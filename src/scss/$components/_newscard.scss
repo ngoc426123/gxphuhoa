@@ -1,0 +1,116 @@
+// ============================================================
+// NEWS CARD — ảnh trên, text dưới (kiểu báo tin tức)
+// ============================================================
+.newsCard {
+  display: flex;
+  flex-direction: column;
+
+  &-img {
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+
+    a {
+      display: block;
+      overflow: hidden;
+
+      &:hover img {
+        transform: scale(1.03);
+      }
+
+      img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    span.newsCard-cat {
+      display: none; // cat badge inside image — hidden by default
+    }
+  }
+
+  &-body {
+    padding: 10px 0 8px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &-cat-text {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--main);
+  }
+
+  &-title {
+    display: block;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 700;
+    color: $color-black-2;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--main);
+    }
+  }
+
+  &-des {
+    font-size: 13px;
+    line-height: 20px;
+    color: $color-black-4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &-date {
+    font-size: 12px;
+    color: $color-gray-2;
+
+    i {
+      color: var(--main);
+      font-size: 11px;
+    }
+  }
+}
+
+// ============================================================
+// NEWS CARD TEXT — chỉ text, không ảnh
+// ============================================================
+.newsCardText {
+  padding: 10px 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    display: block;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 600;
+    color: $color-black-2;
+    margin-bottom: 3px;
+
+    &:hover {
+      color: var(--main);
+    }
+  }
+
+  &-date {
+    font-size: 11px;
+    color: $color-gray-2;
+  }
+}

@@ -1,41 +1,292 @@
+// ============================================================
+// TOP HOME — layout 3 cột kiểu website tin tức
+// ============================================================
 .topHome {
-  .grid {
-    display: flex;
-    align-items: flex-start;
-    margin: 0 -5px;
-    flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 300px 220px;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: start;
+
+  @include mq(1100) {
+    grid-template-columns: 1fr 260px 200px;
+    gap: 10px;
   }
 
-  .col {
-    width: 33.333333%;
-    flex-basis: 33.333333%;
-    padding: 0 5px;
+  // Tablet: left + mid chiếm toàn bộ, right xuống hàng dưới
+  @include mq(991) {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
 
-    @include mq(768) {
-      width: 50%;
-      flex-basis: 50%;
+  // Mobile: single column
+  @include mq(768) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+// CỘT TRÁI — 1 bài hero lớn + 3 small cards ngang dưới
+.topHome-left {
+  min-width: 0;
+
+  // Hero card: ảnh tỉ lệ 16:9
+  > .newsCard:first-child {
+    margin-bottom: 14px;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: 14px;
+
+    .newsCard-img img {
+      aspect-ratio: 16 / 9;
     }
+
+    .newsCard-title {
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    .newsCard-des {
+      -webkit-line-clamp: 3;
+    }
+  }
+
+  // 3 small cards hàng ngang dưới hero
+  .topHome-left-sub {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 
     @include mq(480) {
-      width: 100%;
-      flex-basis: 100%;
+      grid-template-columns: 1fr 1fr;
     }
 
-    &:nth-child(1) {
-      order: 1;
+    .newsCard-img img {
+      aspect-ratio: 50 / 33;
     }
 
-    &:nth-child(2) {
-      order: 3;
-    }
-
-    &:nth-child(3) {
-      order: 2;
-
-      @include mq(768) {
-        width: 100%;
-        order: 3;
-      }
+    .newsCard-title {
+      font-size: 13px;
+      line-height: 19px;
+      font-weight: 600;
     }
   }
 }
+
+// CỘT GIỮA — 2 cards dọc
+.topHome-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  border-left: 1px solid $color-border;
+  padding-left: 10px;
+
+  @include mq(991) {
+    border-left: none;
+    padding-left: 0;
+    border-top: none;
+  }
+
+  @include mq(768) {
+    border-top: 1px solid $color-border;
+    padding-top: 14px;
+  }
+
+  .newsCard-img img {
+    aspect-ratio: 50 / 31;
+  }
+
+  .newsCard-title {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .newsCard-des {
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// CỘT PHẢI — 1 ảnh nổi bật + danh sách text
+.topHome-right {
+  min-width: 0;
+  border-left: 1px solid $color-border;
+  padding-left: 10px;
+
+  // Tablet: xuống hàng, layout ngang (featured | list)
+  @include mq(991) {
+    grid-column: 1 / -1;
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid $color-border;
+    padding-top: 14px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  // Mobile: ẩn
+  @include mq(768) {
+    display: none;
+  }
+
+  .topHome-right-featured {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--main);
+
+    @include mq(991) {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .newsCard-img img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .newsCard-title {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .newsCard-body {
+      padding-bottom: 0;
+    }
+  }
+
+  .topHome-right-list {
+    @include mq(991) {
+      border-left: 1px solid $color-border;
+      padding-left: 16px;
+    }
+
+    .newsCardText {
+      padding: 9px 0;
+    }
+  }
+}
+
+// ============================================================
+// NEWS FOCUS TABS — section tin tức dạng tab ngang
+// ============================================================
+.newsFocusTabs {
+  margin-bottom: 28px;
+}
+
+.newsFocusTabs-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  border-bottom: 2px solid var(--main);
+  margin-bottom: 20px;
+  padding-bottom: 0;
+
+  &.nav {
+    flex-wrap: nowrap;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    @extend %font-title;
+    color: $color-black-4;
+    border: 1px solid $color-border;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    background: $color-gray-1;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+
+    &:hover {
+      background: #dce8f8;
+      color: var(--main);
+    }
+
+    &.active {
+      background: var(--main);
+      color: #fff;
+      border-color: var(--main);
+    }
+  }
+}
+
+.newsFocusTabs-pane {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @include mq(768) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.newsFocusTabs-feature {
+  .news {
+    .date {
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .tend a {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 22px;
+    }
+
+    .des {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+  }
+}
+
+.newsFocusTabs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+
+  @include mq(480) {
+    grid-template-columns: 1fr;
+  }
+
+  .news.v2 {
+    border-bottom: none;
+    margin-bottom: 0;
+
+    .img {
+      width: 72px;
+      flex-shrink: 0;
+    }
+
+    .tend a {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18px;
+      max-height: none;
+
+      &:hover {
+        color: var(--main);
+      }
+    }
+
+    .date {
+      font-size: 11px;
+    }
+  }
+}
+
+// ============================================================

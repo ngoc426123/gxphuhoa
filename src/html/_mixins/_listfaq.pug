@@ -1,8 +1,25 @@
-mixin listFaq(items) 
-  each item in items
-    .col
-      .faq
-        .caption
-          .date!=item.date
-          .tend
-            +link(item.title, item.link)!=item.title
+mixin listFaq(items)
+  - const featured = items[0]
+  - const rest = items.slice(1)
+  .faqHome-featured
+    .faqHome-featured-icon
+      i.fas.fa-question
+    .faqHome-featured-body
+      span.faqHome-featured-label Hỏi Đáp
+      h3.faqHome-featured-title
+        a(href=featured.link)= featured.title
+      p.faqHome-featured-excerpt Tìm hiểu sâu hơn về đời sống đức tin qua những câu giải đáp từ Giáo huấn Hội Thánh Công giáo. Các bài viết được biên soạn dựa trên Giáo lý Hội Thánh và chia sẻ của các linh mục trong giáo xứ.
+      .faqHome-featured-footer
+        a.faqHome-featured-cta(href=featured.link)
+          | Đọc bài đầy đủ
+          i.fas.fa-arrow-right
+      .faqHome-featured-date
+        i.far.fa-clock
+        = ' ' + featured.date
+  .faqHome-list
+    .faqHome-list-head Các câu hỏi khác
+    each item, i in rest
+      a.faqHome-row(href=item.link)
+        span.faqHome-row-num= (i + 2 < 10 ? '0' + (i + 2) : '' + (i + 2))
+        span.faqHome-row-title= item.title
+        span.faqHome-row-date= item.date

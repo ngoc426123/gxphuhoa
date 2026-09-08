@@ -1,46 +1,65 @@
-#gx-header
-  #headBanner
-    +link(href="index.html")
-      +img("images/banner.jpg", "Logo")
-  
-  #headMenu
-    +list([
-      {
-        title: 'Thông tin',
-        href: "#",
-        sub: [
-          { title: 'Tài liệu tham khảo', href: "#", },
-          { title: 'Tin Giáo Hội Hoàn Vũ', href: "#", },
-          { title: 'Tin Giáo Hội Việt Nam', href: "#", },
-          { title: 'Tin Giáo Xứ', href: "#", }
-        ]
-      },
-      {
-        title: 'Hội đồng mục vụ',
-        href: "#",
-        sub: [
-          { title: 'Khu Giáo I Thánh Phêrô', href: "#", },
-          { title: 'Khu Giáo II Thánh Giuse', href: "#", },
-          { title: 'Khu Giáo III Thánh Martinô', href: "#", },
-        ]
-      },
-      {
-        title: 'Các hội đoàn',
-        href: "#",
-        sub: [
-          { title: 'Ban Caritas Phú Hòa', href: "#", },
-          { title: 'Ban Kẻ Liệt', href: "#", },
-          { title: 'Ban Lễ Sinh', href: "#", },
-        ]
-      },
-    ])
+#gx-topbar(data-head-top)
+  .topbar-inner
+    .topbar-left
+      a.topbar-phone(href="tel:0373996947" title="037 399 6947")
+        i.fas.fa-phone
+    nav.topbar-nav
+      a(href="index.html") Trang chủ
+      a.iAbout(href="about.html") Giới thiệu
+      a(href="contact.html") Liên hệ
 
-  #headMobile
-    .logo
-      +link(href="index.html")
-        +img("images/logo.png", "Logo")
-    .hotlineMobile
-      +link("tel:0373996947", "Phone Number.")
-    .menuMobile
+#gx-header
+  .header-inner
+    .header-logo
+      a(href="index.html" title="Giáo Xứ Phú Hòa")
+        img(src="images/logo.png" alt="Giáo Xứ Phú Hòa")
+        span.site-name
+          span.site-name-top Giáo Xứ
+          span.site-name-bot PHÚ HOÀ
+
+    form.header-search(action="search.html" method="get")
+      input.header-search__input(type="search" name="s" placeholder="Tìm kiếm bài viết...")
+      button.header-search__btn(type="submit")
+        i.fas.fa-search
+
+    .header-actions
       .iconMenu
         .styleMenu
+
+#gx-navbar
+  .navbar-inner
+    nav.navbar-nav
+      +list([
+        {
+          title: 'Thông tin',
+          href: 'category.html',
+          sub: [
+            { title: 'Tài liệu tham khảo', href: 'category.html', },
+            { title: 'Tin Giáo Hội Hoàn Vũ', href: 'category.html', },
+            { title: 'Tin Giáo Hội Việt Nam', href: 'category.html', },
+            { title: 'Tin Giáo Xứ', href: 'category.html', }
+          ]
+        },
+        {
+          title: 'Hội đồng mục vụ',
+          href: 'category.html',
+          sub: [
+            { title: 'Khu Giáo I Thánh Phêrô', href: 'category.html', },
+            { title: 'Khu Giáo II Thánh Giuse', href: 'category.html', },
+            { title: 'Khu Giáo III Thánh Martinô', href: 'category.html', },
+          ]
+        },
+        {
+          title: 'Các hội đoàn',
+          href: 'category.html',
+          sub: [
+            { title: 'Ban Caritas Phú Hòa', href: 'category.html', },
+            { title: 'Ban Kẻ Liệt', href: 'category.html', },
+            { title: 'Ban Lễ Sinh', href: 'category.html', },
+          ]
+        },
+        {
+          title: 'Linh mục',
+          href: 'fathers.html',
+        },
+      ])

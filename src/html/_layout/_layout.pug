@@ -24,12 +24,10 @@ html
     link(href='css/style.min.css' rel="stylesheet")
 
   body
-    #gx-container
-      include ../_components/_headtop.pug
+    include ../_components/_header.pug
 
+    #gx-container
       .wrapper
-        include ../_components/_header.pug
-        
         #gx-content
           block main-content
 

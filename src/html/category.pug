@@ -3,117 +3,167 @@ extends _layout/_layout
 block main-content
   .row
     .col-12.col-lg-9
-      .newsCategory(data-category)
-        .title Khu Giáo II Thánh Giuse
-        .grid
-          .col1
-            +newsInner({
-              img: 'https://gxphuhoa.org/wp-content/uploads/2014/12/Thanh-gia-508x352.jpg',
+      .catPage
+
+        //- ── Header ─────────────────────────────────────────
+        .catPage-header
+          nav.catPage-breadcrumb
+            a(href="index.html") Trang chủ
+            i.fas.fa-chevron-right
+            span Khu Giáo II Thánh Giuse
+          h1.catPage-title
+            i.fas.fa-bookmark
+            | Khu Giáo II Thánh Giuse
+          span.catPage-count 128 bài viết
+
+        //- ── Hero: 1 nổi bật + 3 nhỏ bên phải ─────────────
+        .catPage-hero
+          .catPage-hero-main
+            +newsCard({
+              img: 'https://gxphuhoa.org/wp-content/uploads/2014/12/Thanh-gia.jpg',
+              cat: 'Khu Giáo II',
               title: 'THÁNH LỄ KÍNH THÁNH GIUSE : MỪNG BỔN MẠNG GIÁO KHU II',
+              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
               date: '06:02 19/03/2021',
-              link: '#'
+              link: 'single.html'
             })
-          .col2
-            .grid 
-              .col3
-                +news({
-                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/03/Le-thanh-Giuse-BM-Kg2-529x352.jpeg',
-                  title: 'LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO KHU II',
-                  date: '17:24 09/05/2021',
-                  link: '#',
-                })
-              .col3
-                +news({
-                  img: 'https://gxphuhoa.org/wp-content/uploads/2020/03/Thanh-Giuse-Copy.jpg',
-                  title: 'THÔNG BÁO: THÁNH LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO KHU 2',
-                  date: '17:24 09/05/2021',
-                  link: '#',
-                })
-              .col3
-                +news({
-                  img: 'https://gxphuhoa.org/wp-content/uploads/2019/11/KG2-hanh-huong-2019-570x321.jpeg',
-                  title: 'Giáo Khu Thánh Giuse: Hành Hương Đức Mẹ Bãi Dâu',
-                  date: '17:24 09/05/2021',
-                  link: '#',
-                })
-              .col3
-                +news({
-                  img: 'https://gxphuhoa.org/wp-content/uploads/2019/04/DSC05393-526x352.jpg',
-                  title: 'Giáo Khu II – Thánh Giuse',
-                  date: '17:24 09/05/2021',
-                  link: '#',
-                })
-        .listNewsCategory(data-list-news)
-          +newsList([
-            {
+          .catPage-hero-side
+            +newsCard({
+              img: 'https://gxphuhoa.org/wp-content/uploads/2020/03/Le-thanh-Giuse-BM-Kg2.jpeg',
+              cat: 'Khu Giáo II',
+              title: 'LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO KHU II',
+              date: '17:24 09/05/2021',
+              link: 'single.html'
+            })
+            +newsCard({
+              img: 'https://gxphuhoa.org/wp-content/uploads/2020/03/Thanh-Giuse-Copy.jpg',
+              cat: 'Thông Báo',
+              title: 'THÔNG BÁO: THÁNH LỄ KÍNH THÁNH GIUSE BỔN MẠNG GIÁO KHU 2',
+              date: '17:24 09/05/2021',
+              link: 'single.html'
+            })
+            +newsCard({
+              img: 'https://gxphuhoa.org/wp-content/uploads/2019/11/KG2-hanh-huong-2019.jpeg',
+              cat: 'Khu Giáo II',
+              title: 'Giáo Khu Thánh Giuse: Hành Hương Đức Mẹ Bãi Dâu',
+              date: '17:24 09/05/2021',
+              link: 'single.html'
+            })
+            +newsCard({
               img: 'https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg',
-              title: '[AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ THIẾU NHI',
+              cat: 'Khu Giáo II',
+              title: 'Chầu Thánh Thể: Sống Kết Hiệp Với Chúa',
               date: '17:24 09/05/2021',
-              link: '#',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
-              title: 'THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
+              link: 'single.html'
+            })
+            +newsCard({
+              img: 'https://gxphuhoa.org/wp-content/uploads/2021/01/Banner-1-Le-Thanh-Phaolo-Tong-do-Tro-Lai-1.jpg',
+              cat: 'Thông Báo',
+              title: 'Thông Báo: Lịch Sinh Hoạt Giáo Khu Tháng 3/2021',
               date: '17:24 09/05/2021',
-              link: '#',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg',
-              title: '[AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ THIẾU NHI',
-              date: '17:24 09/05/2021',
-              link: '#',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg',
-              title: 'THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh',
-              date: '17:24 09/05/2021',
-              link: '#',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa-359x352.jpg',
-              title: 'THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu- Rước Lễ lần đầu',
-              date: '17:24 09/05/2021',
-              link: '#',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2021/01/Banner-1-Le-Thanh-Phaolo-Tong-do-Tro-Lai-1-570x321.jpg',
-              title: 'Thông báo: Thánh lễ Kính Thánh Phaolo trở lại bổn mạng Giáo Khu 5',
-              date: '17:24 09/05/2021',
-              link: '#',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2020/12/BM-KG4-5-570x321.jpeg',
-              title: 'Lễ Đức Mẹ Vô Nhiễm Nguyên Tội : Bổn mạng Giáo khu IV',
-              date: '17:24 09/05/2021',
-              link: '#',
-              cat: 'Khu Giáo IV Đức Mẹ Vô Nhiễm',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-            {
-              img: 'https://gxphuhoa.org/wp-content/uploads/2020/12/BM-KG6-2-570x321.jpeg',
-              title: 'THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu- Rước Lễ lần đầu',
-              date: '17:24 09/05/2021',
-              link: '#',
-              cat: 'Khu Giáo IV Đức Mẹ Vô Nhiễm',
-              des: 'Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.',
-              isImgLeft: true,
-            },
-          ])
-        .moreNewsCategory
-          +link('#', 'Load more')(data-load-more data-perpage="10" data-cate="48" data-offset="10")
-            span Xem thêm...
+              link: 'single.html'
+            })
+
+        //- ── Divider ────────────────────────────────────────
+        .catPage-divider
+          span Bài viết mới nhất
+
+        //- ── Article list ───────────────────────────────────
+        .catPage-list(data-list-news)
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Audio Thánh Lễ")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg" alt="Audio Thánh Lễ")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Khu Giáo II
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") [AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ THIẾU NHI
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Thánh Đaminh Savio")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg" alt="Thánh Đaminh Savio")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Thông Báo
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Audio Thánh Lễ")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2020/11/Chau-Thanh-The-20-mau-Copy-2.jpg" alt="Audio Thánh Lễ")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Khu Giáo II
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") [AUDIO THÁNH LỄ] CHÚA NHẬT VI PS-B CHỦ ĐỀ HÃY YÊU THƯƠNG NHAU THÁNH LỄ SÁNG
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Bổn mạng Ban Lễ Sinh")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2020/05/Thanh-Daminh-Savio.jpg" alt="Bổn mạng Ban Lễ Sinh")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Thông Báo
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") THÔNG BÁO: Thánh lễ kính Thánh Đaminh Savio bổn mạng Ban Lễ Sinh
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Thiếu Nhi")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2017/05/logo-tntt-phu-hoa.jpg" alt="Thiếu Nhi")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Thiếu Nhi
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu – Rước Lễ lần đầu cho các em thiếu nhi
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Thánh Phaolô")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2021/01/Banner-1-Le-Thanh-Phaolo-Tong-do-Tro-Lai-1.jpg" alt="Thánh Phaolô")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Khu Giáo V
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") Thông báo: Thánh lễ Kính Thánh Phaolo trở lại bổn mạng Giáo Khu 5
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Giáo khu IV")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2020/12/BM-KG4-5.jpeg" alt="Giáo khu IV")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Khu Giáo IV
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") Lễ Đức Mẹ Vô Nhiễm Nguyên Tội : Bổn mạng Giáo khu IV
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+          .catNewsRow
+            a.catNewsRow-img(href="single.html" title="Lãnh nhận Bí Tích")
+              img(src="https://gxphuhoa.org/wp-content/uploads/2020/12/BM-KG6-2.jpeg" alt="Lãnh nhận Bí Tích")
+            .catNewsRow-body
+              .catNewsRow-meta
+                span.catNewsRow-cat Khu Giáo IV
+                span.catNewsRow-date
+                  i.far.fa-clock
+                  |  17:24 09/05/2021
+              a.catNewsRow-title(href="single.html") THÔNG BÁO: Lãnh nhận Bí Tích xưng tội lần đầu - Rước Lễ lần đầu
+              p.catNewsRow-des Trong tâm tình cảm tạ hồng ân Chúa, hòa chung với bầu khí Giáo hội hân hoan mừng kính trọng thể Thánh Giuse bạn trăm năm Đức Maria.
+
+        //- ── Load more ──────────────────────────────────────
+        .catPage-more
+          button.catPage-more-btn(data-load-more data-perpage="10" data-cate="48" data-offset="10")
+            | Xem thêm bài viết
+            i.fas.fa-chevron-down
+
     .col-12.col-lg-3
       include ./_components/_sidebar.pug

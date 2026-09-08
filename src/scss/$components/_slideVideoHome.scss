@@ -1,9 +1,10 @@
 .slideVideoHome {
   $this: &;
 
-	padding: 20px;
-	margin-bottom: 20px;
-	background: var(--dark);
+  padding: 20px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #1a3c5e 0%, var(--dark) 100%);
+  border-radius: 6px;
 
   &-head {
     margin-bottom: 15px;
@@ -13,13 +14,13 @@
       display: block;
       font-size: 12px;
       line-height: 20px;
-      color: $color-gray-1;
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 
   &-head-text {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 30px;
   }
 
   &-item-video {

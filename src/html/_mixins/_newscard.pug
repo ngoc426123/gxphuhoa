@@ -1,0 +1,27 @@
+//- newsCard: ảnh trên — tiêu đề + mô tả bên dưới (kiểu báo tin tức)
+//- item: { img, cat, title, des, date, link }
+mixin newsCard(item)
+  .newsCard
+    .newsCard-img
+      a(href=item.link title=item.title)
+        img(src=item.img alt=item.title)
+        if item.cat
+          span.newsCard-cat!=item.cat
+    .newsCard-body
+      if item.cat
+        span.newsCard-cat-text!=item.cat
+      a.newsCard-title(href=item.link title=item.title)!=item.title
+      if item.des
+        p.newsCard-des!=item.des
+      if item.date
+        span.newsCard-date
+          i.far.fa-clock
+          | &nbsp;
+          !=item.date
+
+//- newsCardText: chỉ là text link không ảnh
+mixin newsCardText(item)
+  .newsCardText
+    a(href=item.link title=item.title)!=item.title
+    if item.date
+      span.newsCardText-date!=item.date

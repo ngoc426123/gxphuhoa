@@ -98,7 +98,8 @@ export default function ScreenShelf() {
                     return (
                       <div
                         key={`number-${numberIndex}`}
-                        className="screen-shelf__shelf-cell"
+                        className={`screen-shelf__shelf-cell ${findPray ? '--has-pray' : ''}`}
+                        {...(findPray ? { title: findPray.name } : {})}
                         data-position={`${rowIndex + 1}|${numberIndex + 1}`}
                         {...(findPray 
                           ? { onClick: () => onClickPray(findPray.positionID) } 

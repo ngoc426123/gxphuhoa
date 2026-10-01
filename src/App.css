@@ -1,5 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+/* Prefix --pfu- để không đụng biến của theme; khai báo ở :root vì Modal render ra ngoài #root */
+:root {
+  --pfu-bg: #FBF7EF;
+  --pfu-surface: #FFFDF8;
+  --pfu-ink: #2B2A33;
+  --pfu-muted: #7A7266;
+  --pfu-line: #E8DEC9;
+  --pfu-gold: #B8893B;
+  --pfu-gold-soft: #F3E6C6;
+  --pfu-glow: rgba(232, 180, 80, 0.45);
+  --pfu-night: #1E2340;
+  --pfu-night-2: #2E3561;
+  --pfu-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
 .App-pray-for-us {
-  padding: 50px 30px 40px;
+  padding: 60px 30px 50px;
+  color: var(--pfu-ink);
+  background:
+    radial-gradient(ellipse 60% 320px at 50% 0, rgba(243, 230, 198, 0.9), transparent 70%),
+    var(--pfu-bg);
 }
 
 .App-pray-for-us img {
@@ -7,67 +28,106 @@
 }
 
 .App-info {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .App-sub-title {
-  font-size: 30px;
-  line-height: 40px;
-  font-weight: 300;
-  text-align: center;
+  font-family: var(--pfu-serif);
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--pfu-muted);
 }
 
 .App-title {
-  margin-bottom: 10px;
-  font-size: 45px;
-  line-height: 55px;
+  margin-bottom: 14px;
+  font-family: var(--pfu-serif);
+  font-size: 52px;
+  line-height: 60px;
   font-weight: 700;
-  text-align: center;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: var(--pfu-night);
 }
 
-.App-desc {
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.App-control-view {
+.App-ornament {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  color: var(--pfu-gold);
+}
+
+.App-ornament::before,
+.App-ornament::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pfu-gold));
+}
+
+.App-ornament::after {
+  transform: scaleX(-1);
+}
+
+.App-desc {
+  margin-bottom: 26px;
+  font-family: var(--pfu-serif);
+  font-size: 22px;
+  line-height: 30px;
+  font-style: italic;
+  color: var(--pfu-muted);
+}
+
+.App-control-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--pfu-surface);
+  border: solid 1px var(--pfu-line);
+  border-radius: 999px;
 }
 
 .App-control-view button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
+  width: 42px;
+  height: 42px;
   border: none;
   background: transparent;
-  border: solid 1px #E5E5E5;
   border-radius: 100%;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.App-control-view button:hover {
+  background-color: var(--pfu-gold-soft);
+}
+
+.App-control-view button:focus-visible {
+  outline: 2px solid var(--pfu-gold);
+  outline-offset: 2px;
 }
 
 .App-control-view button.--active {
-  border-color: #000000;
-}
-
-.App-control-view button.--active img {
-  opacity: 1;
+  background-color: var(--pfu-night);
 }
 
 .App-control-view button img {
   display: block;
-  max-width: 20px;
-  opacity: 0.3;
+  max-width: 18px;
+  opacity: 0.45;
   transition: all 0.2s ease;
+}
+
+.App-control-view button.--active img {
+  opacity: 1;
+  filter: invert(1);
 }
 
 .houdini-modal-overlay {
@@ -75,9 +135,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(20, 22, 40, 0.72);
+  backdrop-filter: blur(3px);
   position: fixed;
   inset: 0px;
+  z-index: 9999;
   overflow: hidden;
   overflow-y: auto;
 }
@@ -87,10 +149,15 @@
   max-width: 768px;
   margin: 0 20px;
   padding: 60px 50px 30px;
-  background-color: #FFFFFF;
+  color: var(--pfu-ink);
+  background:
+    radial-gradient(ellipse 70% 220px at 50% 0, var(--pfu-gold-soft), transparent 70%),
+    var(--pfu-surface);
+  border-top: solid 3px var(--pfu-gold);
   outline: none;
   position: relative;
   border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   overflow: hidden;
 }
 
@@ -98,34 +165,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  background-color: #E5E5E5;
-  border: none;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: solid 1px var(--pfu-line);
+  border-radius: 100%;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.houdini-modal-close:hover {
+  background-color: var(--pfu-gold-soft);
 }
 
 .houdini-modal-close img {
-  max-width: 20px;
+  max-width: 16px;
 }
 
 @media only screen and (max-width: 768px) {
   .App-sub-title {
     font-size: 20px;
-    line-height: 30px;
+    line-height: 28px;
   }
 
   .App-title {
-    font-size: 35px;
-    line-height: 45px;
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .houdini-modal {
+    padding: 60px 20px 24px;
   }
 }
 
 @media only screen and (max-width: 540px) {
   .App-pray-for-us {
     padding: 40px 0px 50px;
-    background-size: 170px;
+  }
+
+  .App-title {
+    font-size: 30px;
+    line-height: 38px;
   }
 }

@@ -2,7 +2,7 @@
   display: flex;
   align-items: stretch;
   max-width: 100%;
-  padding-bottom: 10px;
+  padding: 0 0 16px;
   text-align: center;
   overflow: hidden;
   overflow-x: auto;
@@ -10,27 +10,34 @@
 
 .screen-shelf__shelf {
   display: block;
-  border: solid 1px #000000;
   margin: 0 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: var(--pfu-surface);
+  border: solid 1px var(--pfu-line);
+  border-radius: 120px 120px 8px 8px / 36px 36px 8px 8px;
+  box-shadow: 0 10px 30px rgba(30, 35, 64, 0.08);
+  overflow: hidden;
 }
 
 .screen-shelf__shelf-head {
-  padding: 15px 10px;
-  background-color: #000000;
+  padding: 22px 10px 16px;
   color: #FFFFFF;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: linear-gradient(180deg, var(--pfu-night-2), var(--pfu-night));
+  border-bottom: solid 2px var(--pfu-gold);
 }
 
 .screen-shelf__shelf-title {
+  font-family: var(--pfu-serif);
+  font-size: 22px;
+  line-height: 26px;
   font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--pfu-gold-soft);
 }
 
 .screen-shelf__shelf-sub-title {
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.6)
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .screen-shelf__shelf-body {
@@ -43,30 +50,53 @@
 }
 
 .screen-shelf__shelf-row:not(:last-child) {
-  border-bottom: solid 1px #BBBBBB;
+  border-bottom: solid 1px var(--pfu-line);
 }
 
 .screen-shelf__shelf-cell {
   width: 40px;
   min-height: 45px;
-  padding: 10px;
+  padding: 8px;
   flex-basis: 100%;
   flex-grow: 1;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.screen-shelf__shelf-cell:hover {
-  background-color: #EEEEEE;
+  transition: background-color 0.3s ease;
 }
 
 .screen-shelf__shelf-cell:not(:last-child) {
-  border-right: solid 1px #BBBBBB;
+  border-right: solid 1px var(--pfu-line);
+}
+
+/* Ô có người: quầng sáng ánh nến */
+.screen-shelf__shelf-cell.--has-pray {
+  background: radial-gradient(circle, var(--pfu-glow) 0%, transparent 70%);
+  cursor: pointer;
+}
+
+.screen-shelf__shelf-cell.--has-pray:hover {
+  background-color: var(--pfu-gold-soft);
 }
 
 .screen-shelf__shelf-cell img {
+  display: block;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 100%;
-  box-shadow: 0px 3px 2px rgba(0,0,0, 0.3);
+  box-shadow: 0 0 0 2px var(--pfu-gold), 0 0 10px var(--pfu-glow);
+  animation: pfu-candle 3.2s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+.screen-shelf__shelf-cell.--has-pray:hover img {
+  transform: scale(1.15);
+}
+
+@keyframes pfu-candle {
+  0%, 100% { box-shadow: 0 0 0 2px var(--pfu-gold), 0 0 8px var(--pfu-glow); }
+  50%      { box-shadow: 0 0 0 2px var(--pfu-gold), 0 0 16px var(--pfu-glow); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-shelf__shelf-cell img {
+    animation: none;
+  }
 }

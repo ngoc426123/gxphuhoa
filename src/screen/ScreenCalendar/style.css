@@ -10,15 +10,19 @@
 }
 
 .screen-calendar__info-year {
-  font-size: 30px;
-  line-height: 30px;
-  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--pfu-gold);
 }
 
 .screen-calendar__info-month {
-  font-size: 40px;
-  line-height: 40px;
-  font-weight: 300;
+  font-family: var(--pfu-serif);
+  font-size: 44px;
+  line-height: 46px;
+  font-weight: 700;
+  color: var(--pfu-night);
 }
 
 .screen-calendar__control {
@@ -32,8 +36,15 @@
   margin-right: 10px;
   border: none;
   background: transparent;
-  border: solid 1px #E5E5E5;
+  border: solid 1px var(--pfu-line);
   border-radius: 100%;
+  background: var(--pfu-surface);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.screen-calendar__control-cta:hover {
+  background-color: var(--pfu-gold-soft);
 }
 
 .screen-calendar__control-cta.--right img {
@@ -41,11 +52,6 @@
 }
 
 @media only screen and (max-width: 540px) {
-  .screen-calendar__info-year {
-    font-size: 30px;
-    line-height: 30px;
-  }
-
   .screen-calendar__info-month {
     font-size: 30px;
     line-height: 30px;

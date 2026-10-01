@@ -3,30 +3,52 @@
 }
 
 .pray-slider__head {
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   text-align: center;
 }
 
 .pray-slider__title {
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 600;
-  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-family: var(--pfu-serif);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  color: var(--pfu-night);
 }
 
 .pray-slider__desc {
+  font-family: var(--pfu-serif);
+  font-size: 18px;
+  line-height: 26px;
   font-style: italic;
+  color: var(--pfu-muted);
 }
 
 .swiper-slide {
   width: 220px;
 }
 
+.pray-slider__item {
+  padding: 14px 14px 18px;
+  background: var(--pfu-surface);
+  border: solid 1px var(--pfu-line);
+  border-radius: 110px 110px 12px 12px / 60px 60px 12px 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.swiper-slide-active .pray-slider__item {
+  box-shadow: 0 10px 30px var(--pfu-glow);
+  border-color: var(--pfu-gold);
+}
+
 .pray-slider__image {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  border-radius: 100px 100px 6px 6px / 54px 54px 6px 6px;
+  overflow: hidden;
 }
 
 .pray-slider__image img {
+  display: block;
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -37,25 +59,38 @@
   text-align: center;
 }
 
+.pray-slider__name {
+  margin-bottom: 4px;
+  font-family: var(--pfu-serif);
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--pfu-night);
+}
+
+.pray-slider__year-of-dead {
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--pfu-gold);
+}
+
 .pray-slider__position-info {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 8px;
+  border-top: solid 1px var(--pfu-line);
 }
 
 .pray-slider__position-item {
   margin: 0 5px;
   font-size: 12px;
-  color: #bbbbbb;
-}
-
-.pray-slider__year-of-dead {
-  font-size: 12px;
-  color: #bbbbbb;
+  color: var(--pfu-muted);
 }
 
 .pray-slider__slider {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
 }
 
 .pray-slider__text-swipe {
@@ -63,5 +98,5 @@
   line-height: 20px;
   font-style: italic;
   text-align: center;
-  color: #b3b3b3;
+  color: var(--pfu-muted);
 }

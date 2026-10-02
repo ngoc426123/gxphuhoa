@@ -24,7 +24,7 @@
   color: var(--pfu-muted);
 }
 
-.swiper-slide {
+.pray-slider .swiper-slide {
   width: 220px;
 }
 
@@ -36,7 +36,7 @@
   transition: box-shadow 0.3s ease;
 }
 
-.swiper-slide-active .pray-slider__item {
+.pray-slider .swiper-slide-active .pray-slider__item {
   box-shadow: 0 10px 30px var(--pfu-glow);
   border-color: var(--pfu-gold);
 }

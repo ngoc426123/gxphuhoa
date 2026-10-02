@@ -7,6 +7,12 @@ import Unknown_person_img from "../../assets/images/Unknown_person.jpg";
 import "swiper/css";
 import "./style.css";
 
+// 'YYYY-MM-DD HH:mm:ss' -> 'DD/MM/YYYY'
+const formatDate = (value) => {
+  const [year, month, day] = (value || '').slice(0, 10).split('-');
+  return day ? `${day}/${month}/${year}` : '';
+};
+
 export default function PraySlider(props) {
   // PROPS
   const { data } = props;
@@ -33,7 +39,7 @@ export default function PraySlider(props) {
               </div>
               <div className='pray-slider__info'>
                 <div className='pray-slider__name'>{item.name || 'Chưa có tên'}</div>
-                <div className='pray-slider__year-of-dead'>Ngày mất: {item.yearOfDeadFormat || 'Chưa thông tin'}</div>
+                <div className='pray-slider__year-of-dead'>Ngày mất: {formatDate(item.yearOfDead) || 'Chưa thông tin'}</div>
                 <div className='pray-slider__position-info'>
                   <div className='pray-slider__position-item'>Số kệ: {item.shelf || 'Chưa thông tin'}</div>
                   <div className='pray-slider__position-item'>Số hàng: {item.row || 'Chưa thông tin'}</div>

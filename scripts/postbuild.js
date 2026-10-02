@@ -1,5 +1,5 @@
 // Bỏ hash khỏi file build: main.81ab7866.css -> main.css, main.f788d953.js -> main.js
-// để theme WordPress enqueue tên cố định (cache-bust bằng filemtime trong functions.php).
+// để plugin enqueue tên cố định (cache-bust bằng filemtime trong gxphuhoa-pray-for-us/index.php).
 const fs = require('fs');
 const path = require('path');
 
@@ -33,3 +33,12 @@ for (const file of ['index.html', 'asset-manifest.json']) {
     fs.writeFileSync(abs, fs.readFileSync(abs, 'utf8').replace(/main\.[0-9a-f]+\./g, 'main.'));
   }
 }
+
+// Copy asset vào plugin để plugin tự enqueue: static/js, static/css, static/media (bỏ .map, .LICENSE.txt)
+const pluginStatic = path.join(__dirname, '..', 'gxphuhoa-pray-for-us', 'app', 'static');
+fs.rmSync(pluginStatic, { recursive: true, force: true });
+fs.cpSync(path.join(build, 'static'), pluginStatic, {
+  recursive: true,
+  filter: (src) => !/\.(map|LICENSE\.txt)$/.test(src),
+});
+console.log('static -> gxphuhoa-pray-for-us/app/static');

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Modal from 'react-modal';
 import ScreenCalendar from './screen/ScreenCalendar';
 import ScreenShelf from './screen/ScreenShelf';
 
@@ -9,8 +8,6 @@ import Block_icon from "./assets/images/block.svg";
 
 // STYLE
 import './App.css';
-
-Modal.setAppElement('#root-pray-for-us');
 
 function App() {
   // STATE

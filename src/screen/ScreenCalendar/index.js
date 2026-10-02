@@ -26,22 +26,20 @@ export default function ScreenCalendar() {
   const calendarPrayData = useMemo(() => {
     return prayData
       .reduce((cum, cur) => {
-        const date = new Date(cur.yearOfDead);
+        const date = new Date(cur.yearOfDead.replace(' ', 'T')); // 'YYYY-MM-DD HH:mm:ss' có dấu cách → Safari trả Invalid Date
         const day = date.getDate();
         const hasDay = cum.some(item => item.day === day);
-        const yearOfDeadFormat = date.toLocaleDateString('vi-VN');
-        const curFormatDate = { ...cur, yearOfDeadFormat };
 
         if (hasDay) {
           const shipIndex = cum.findIndex(item => item.day === day);
           const shipFilter = cum.filter(item => item.day === day)[0];
           const shipData = shipFilter.data;
 
-          shipData.push(curFormatDate);
+          shipData.push(cur);
 
           cum[shipIndex] = { ...cum[shipIndex], data: shipData };
         } else {
-          cum.push({ day, data: [curFormatDate] });
+          cum.push({ day, data: [cur] });
         }
 
         return cum;
@@ -53,7 +51,7 @@ export default function ScreenCalendar() {
   const getPrayForUs = useCallback(async () => {
     try {
       const { month } = current;
-      const apiUrl = process.env.REACT_APP_API + '/' + month;
+      const apiUrl = (window.PRAY_FOR_US?.api || process.env.REACT_APP_API) + '/' + month;
       const options = {
         method: 'GET'
       }

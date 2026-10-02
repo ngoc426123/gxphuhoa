@@ -6,10 +6,33 @@
   text-align: center;
   overflow: hidden;
   overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pfu-gold) var(--pfu-gold-soft);
+}
+
+.screen-shelf.--dragging {
+  cursor: grabbing;
+}
+
+.screen-shelf::-webkit-scrollbar {
+  height: 8px;
+}
+
+.screen-shelf::-webkit-scrollbar-track {
+  background: var(--pfu-gold-soft);
+  border-radius: 8px;
+}
+
+.screen-shelf::-webkit-scrollbar-thumb {
+  background: var(--pfu-gold);
+  border-radius: 8px;
 }
 
 .screen-shelf__shelf {
   display: block;
+  flex-shrink: 0;
   margin: 0 10px;
   background: var(--pfu-surface);
   border: solid 1px var(--pfu-line);
@@ -54,11 +77,12 @@
 }
 
 .screen-shelf__shelf-cell {
-  width: 40px;
-  min-height: 45px;
-  padding: 8px;
-  flex-basis: 100%;
-  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  flex: 0 0 44px;
+  min-height: 64px;
+  padding: 4px;
+  box-sizing: border-box;
   transition: background-color 0.3s ease;
 }
 
@@ -78,6 +102,7 @@
 
 .screen-shelf__shelf-cell img {
   display: block;
+  width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 100%;
@@ -99,4 +124,53 @@
   .screen-shelf__shelf-cell img {
     animation: none;
   }
+}
+
+/* Tìm kiếm theo họ tên */
+.screen-shelf-search {
+  max-width: 420px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.screen-shelf-search__input {
+  width: 100%;
+  padding: 10px 18px;
+  font-family: var(--pfu-serif);
+  font-size: 18px;
+  color: var(--pfu-ink);
+  background: var(--pfu-surface);
+  border: solid 1px var(--pfu-line);
+  border-radius: 999px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screen-shelf-search__input:focus {
+  border-color: var(--pfu-gold);
+  box-shadow: 0 0 0 3px var(--pfu-gold-soft);
+}
+
+.screen-shelf-search__result {
+  margin-top: 8px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--pfu-muted);
+}
+
+/* Đang tìm: làm mờ người không khớp, nổi bật người khớp */
+.screen-shelf.--searching .screen-shelf__shelf-cell.--has-pray:not(.--matched) img {
+  opacity: 0.3;
+}
+
+.screen-shelf__shelf-cell.--matched {
+  background: var(--pfu-gold-soft);
+}
+
+.screen-shelf__shelf-cell.--matched img {
+  box-shadow: 0 0 0 3px var(--pfu-gold), 0 0 18px var(--pfu-gold);
+  transform: scale(1.2);
+  animation: none;
 }

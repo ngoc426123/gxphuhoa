@@ -75,21 +75,21 @@ add_filter('enter_title_here', 'prayforus_title_placeholder', 10, 2);
 
 // CUSTOM STYLE
 function prayforus_custom_style() {
-  wp_enqueue_style('prayforusStyleDatetimepicker', PLUGIN_URL_PRAYFORUS .'css/jquery.datetimepicker.min.css','all' );
-  wp_enqueue_style('prayforusStyle', PLUGIN_URL_PRAYFORUS .'css/style.css','all' );
+  wp_enqueue_style('gxphuhoa-pray-for-us-datetimepicker', PLUGIN_URL_PRAYFORUS .'css/jquery.datetimepicker.min.css','all' );
+  wp_enqueue_style('gxphuhoa-pray-for-us-admin', PLUGIN_URL_PRAYFORUS .'css/style.css','all' );
 }
 add_action('admin_head', 'prayforus_custom_style');
 
 // CUSTOM SCRIPT
 function prayforus_custom_script() {
   wp_enqueue_script('jquery');
-  wp_enqueue_script('prayforusScriptDatetimepicker', PLUGIN_URL_PRAYFORUS .'js/jquery.datetimepicker.full.min.js','all' );
-  wp_enqueue_script('prayforusScript', PLUGIN_URL_PRAYFORUS .'js/custom.js','all' );
+  wp_enqueue_script('gxphuhoa-pray-for-us-datetimepicker', PLUGIN_URL_PRAYFORUS .'js/jquery.datetimepicker.full.min.js','all' );
+  wp_enqueue_script('gxphuhoa-pray-for-us-admin', PLUGIN_URL_PRAYFORUS .'js/custom.js','all' );
 }
 add_action('admin_footer', 'prayforus_custom_script');
 
 // META BOX
-$wpcf_arr = [
+$prayforus_fields = [
   "wpcf-pray-for-us-ID",
   "wpcf-pray-for-us-shelf",
   "wpcf-pray-for-us-row",
@@ -99,10 +99,10 @@ $wpcf_arr = [
 ];
 
 function formCallBackPrayForUs($post) {
-  global $wpcf_arr;
+  global $prayforus_fields;
   $wpcf_value = [];
 
-  foreach($wpcf_arr as $value) {
+  foreach($prayforus_fields as $value) {
     $wpcf_value[$value] = get_post_meta($post->ID, $value, true);
   };
 
@@ -203,9 +203,9 @@ add_action( 'add_meta_boxes', 'meta_box_pray_for_us' );
 
 // SAVE AND EDIT META DATA
 function prayforus_save($post_id) {
-  global $wpcf_arr;
+  global $prayforus_fields;
 
-  foreach ($wpcf_arr as $value) {
+  foreach ($prayforus_fields as $value) {
     
     if(isset($_POST[$value])){
       update_post_meta( $post_id, $value, $_POST[$value] );
@@ -215,9 +215,9 @@ function prayforus_save($post_id) {
 add_action('save_post_pray-for-us', 'prayforus_save');
 
 function prayforus_edit($post_id) {
-  global $wpcf_arr;
+  global $prayforus_fields;
 
-  foreach ($wpcf_arr as $value) {
+  foreach ($prayforus_fields as $value) {
     // Quick Edit / trash không gửi các field này → bỏ qua để không xoá mất meta
     if(!isset($_POST[$value])){
       continue;
@@ -247,7 +247,7 @@ function custom_columns_prayforus(){
 add_action('manage_pray-for-us_posts_columns', 'custom_columns_prayforus');
 
 function custom_content_columns_prayforus($column, $post_id){
-  global $wpcf_arr;
+  global $prayforus_fields;
   switch ($column) {
     case 'prayforus-image':
       $image = get_prayforus_image($post_id);
@@ -255,17 +255,17 @@ function custom_content_columns_prayforus($column, $post_id){
       echo "<img class='prayforus-thumbnail' src='{$image}'>";
       break;
     case 'prayforus-info':
-      $dateBirth = get_post_meta($post_id, $wpcf_arr[4], true);
-      $dateDead = get_post_meta($post_id, $wpcf_arr[5], true);
+      $dateBirth = get_post_meta($post_id, $prayforus_fields[4], true);
+      $dateDead = get_post_meta($post_id, $prayforus_fields[5], true);
 
       $info = "<p>Ngày sinh: {$dateBirth}</p>";
       $info.= "<p>Ngày mất: {$dateDead}</p>";
       echo $info;
       break;
     case 'prayforus-position':
-      $shelf = get_post_meta($post_id, $wpcf_arr[1], true);
-      $row = get_post_meta($post_id, $wpcf_arr[2], true);
-      $number = get_post_meta($post_id, $wpcf_arr[3], true);
+      $shelf = get_post_meta($post_id, $prayforus_fields[1], true);
+      $row = get_post_meta($post_id, $prayforus_fields[2], true);
+      $number = get_post_meta($post_id, $prayforus_fields[3], true);
 
       $info = "<p>Dãy kệ: {$shelf}</p>";
       $info.= "<p>Hàng: {$row}</p>";
@@ -299,7 +299,7 @@ function prayforus_register_routes() {
 add_action('rest_api_init', 'prayforus_register_routes');
 
 function prayforus_api_query($meta_query = array()) {
-  global $wpcf_arr;
+  global $prayforus_fields;
   $respondData = [];
   $args = array(
     'post_type'      => 'pray-for-us',
@@ -316,13 +316,13 @@ function prayforus_api_query($meta_query = array()) {
     $respondData[] = [
       'ID' => $ID,
       'name' => $value->post_title,
-      'positionID' => get_post_meta($ID, $wpcf_arr[0], true),
+      'positionID' => get_post_meta($ID, $prayforus_fields[0], true),
       'img' => get_the_post_thumbnail_url($ID, 'medium') ?: '',
-      'yearOfBirth' => get_post_meta($ID, $wpcf_arr[4], true),
-      'yearOfDead' => get_post_meta($ID, $wpcf_arr[5], true),
-      'shelf' => get_post_meta($ID, $wpcf_arr[1], true),
-      'row' => get_post_meta($ID, $wpcf_arr[2], true),
-      'number' => get_post_meta($ID, $wpcf_arr[3], true),
+      'yearOfBirth' => get_post_meta($ID, $prayforus_fields[4], true),
+      'yearOfDead' => get_post_meta($ID, $prayforus_fields[5], true),
+      'shelf' => get_post_meta($ID, $prayforus_fields[1], true),
+      'row' => get_post_meta($ID, $prayforus_fields[2], true),
+      'number' => get_post_meta($ID, $prayforus_fields[3], true),
     ];
   }
 
@@ -357,6 +357,26 @@ function prayforus_api_get_on_day_month($request) {
     ]
   ]);
 }
+
+// SPA: luôn enqueue asset React (build copy vào /app/static) ở front-end, app tự bỏ qua nếu trang không có div mount
+function prayforus_spa_script() {
+  $dir = plugin_dir_path(__FILE__) . 'app/static/';
+
+  // Cache-bust bằng thời gian sửa file, vì tên file build cố định
+  wp_enqueue_style('gxphuhoa-pray-for-us-spa', PLUGIN_URL_PRAYFORUS . 'app/static/css/main.css', array(), filemtime($dir . 'css/main.css'));
+  wp_enqueue_script('gxphuhoa-pray-for-us-spa', PLUGIN_URL_PRAYFORUS . 'app/static/js/main.js', array(), filemtime($dir . 'js/main.js'), true);
+  wp_add_inline_script('gxphuhoa-pray-for-us-spa', 'window.PRAY_FOR_US = ' . wp_json_encode(array(
+    'api' => rest_url('apigxphuhoa/pray-for-us'),
+    'publicPath' => PLUGIN_URL_PRAYFORUS . 'app/',
+  )) . ';', 'before');
+}
+add_action('wp_enqueue_scripts', 'prayforus_spa_script');
+
+// SPA: shortcode [pray_for_us] in div mount
+function prayforus_spa_shortcode() {
+  return '<div id="root-pray-for-us"></div>';
+}
+add_shortcode('pray_for_us', 'prayforus_spa_shortcode');
 
 // FUNCTION
 function get_prayforus_image($postID){

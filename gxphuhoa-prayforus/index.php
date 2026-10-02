@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Gx Phú Hòa Pray for Us
+ * Plugin Name: Gx Phu Hoa - Pray for Us
  * Plugin URI: http://gxphuhoa.org
  * Description: Plugin tạo Custom Post Type Nhà Chờ Phục sinh của Gx.Phú Hoà
  * Version: 1.1

@@ -1,0 +1,47 @@
+.father-form-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.father-form-label {
+  width: 100px;
+  padding-top: 5px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.father-form-input {
+  width: 100%;
+}
+
+.father-form-control {
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.father-form-note {
+  display: block;
+  font-size: 12px;
+  color: #919191;
+  font-style: italic;
+}
+
+.father-form-note.--red {
+  color: rgb(143, 0, 0);
+}
+
+.column-father-image {
+  width: 120px;
+}
+
+.father-thumbnail {
+  width: 120px;
+  aspect-ratio: 9/14;
+  object-fit: cover;
+  object-position: top; 
+}
+
+.father-box {
+  padding: 15px 0;
+}

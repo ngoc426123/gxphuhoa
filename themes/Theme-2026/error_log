@@ -1,0 +1,4 @@
+[09-Sep-2026 08:32:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/gxphu943/public_html/wp-content/themes/Theme-2026/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/gxphu943/public_html/wp-content/themes/Theme-2026/index.php on line 1

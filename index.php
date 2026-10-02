@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: GX Phu Hoa CKEditor
+ * Plugin Name: GX Phu Hoa - CKEditor
  * Description: A custom CKEditor integration for WordPress.
  * Version: 1.0
  * Author: MinhNgoc.ith

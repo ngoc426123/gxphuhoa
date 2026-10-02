@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Lời Chúa Hàng Ngày (Vatican News)
+ * Plugin Name:       Gx Phu Hoa - Daily Gospel (Vatican News)
  * Plugin URI:        https://github.com/gxphuhoa/gxphuhoa-vatican-holyweekly
  * Description:       Hiển thị Lời Chúa hằng ngày trong tuần từ RSS Vatican News tiếng Việt. Sử dụng shortcode [gxphuhoa-vaitcan-daily-gospel].
  * Version:           1.0.0

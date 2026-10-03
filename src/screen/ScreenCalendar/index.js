@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import gsap from 'gsap';
 import Calendar from '../../components/Calendar';
 import { months } from '../../constants/date';
 import Modal from 'react-modal';
@@ -13,16 +14,21 @@ import './style.css';
 
 export default function ScreenCalendar() {
   const _timeRef = useRef();
+  const _gridRef = useRef(null);
+  // Trạng thái chuyển tháng: pendingDir (hướng đang chạy) / leaveDone / dataReady / target (tháng-năm đích)
+  const _transition = useRef({ pendingDir: null, leaveDone: true, dataReady: true, target: null });
   const now = new Date();
 
   // STATE
   const [current, setCurrent] = useState({ month: now.getMonth() + 1, year: now.getFullYear() });
+  // displayCurrent: tháng/năm thực sự đang render ra Calendar, chỉ đổi khi data mới đã sẵn sàng + animation thoát đã xong
+  const [displayCurrent, setDisplayCurrent] = useState(current);
   const [prayData, setPrayData] = useState([]);
   const [praySliderData, setPraySliderData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const textMonth = useMemo(() => {
-    return months[current.month - 1];
-  }, [current.month]);
+    return months[displayCurrent.month - 1];
+  }, [displayCurrent.month]);
   const calendarPrayData = useMemo(() => {
     return prayData
       .reduce((cum, cur) => {
@@ -47,7 +53,56 @@ export default function ScreenCalendar() {
       .sort((a, b) => a.day - b.day);
   }, [prayData]);
 
-  // METHOD
+  // METHOD: hoàn tất chuyển tháng khi cả animation thoát lẫn data mới đều đã sẵn sàng
+  const tryCommit = useCallback(() => {
+    const t = _transition.current;
+
+    if (!t.pendingDir || !t.leaveDone || !t.dataReady) return;
+
+    const dir = t.pendingDir;
+    const target = t.target;
+
+    _transition.current = { pendingDir: null, leaveDone: true, dataReady: true, target: null };
+
+    setDisplayCurrent(target);
+
+    const el = _gridRef.current;
+
+    if (el) {
+      gsap.set(el, { x: dir === 'next' ? 30 : -30 });
+      gsap.to(el, { autoAlpha: 1, x: 0, duration: 0.32, ease: 'power2.out' });
+    }
+  }, []);
+
+  const animateOut = useCallback((dir) => {
+    const el = _gridRef.current;
+
+    if (!el) {
+      _transition.current.leaveDone = true;
+      tryCommit();
+      return;
+    }
+
+    gsap.to(el, {
+      autoAlpha: 0,
+      x: dir === 'next' ? -30 : 30,
+      duration: 0.28,
+      ease: 'power1.in',
+      onComplete: () => {
+        _transition.current.leaveDone = true;
+        tryCommit();
+      },
+    });
+  }, [tryCommit]);
+
+  const startTransition = useCallback((dir, nextMonth, nextYear) => {
+    if (_transition.current.pendingDir) return; // đang chuyển dở thì bỏ qua click mới
+
+    _transition.current = { pendingDir: dir, leaveDone: false, dataReady: false, target: { month: nextMonth, year: nextYear } };
+    setCurrent({ month: nextMonth, year: nextYear });
+    animateOut(dir);
+  }, [animateOut]);
+
   const getPrayForUs = useCallback(async () => {
     try {
       const { month } = current;
@@ -61,8 +116,11 @@ export default function ScreenCalendar() {
       setPrayData(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      _transition.current.dataReady = true;
+      tryCommit();
     }
-  }, [current]);
+  }, [current, tryCommit]);
 
   const handleEventPreDate = () => {
     let currentMonth = current.month;
@@ -75,8 +133,7 @@ export default function ScreenCalendar() {
       currentMonth--;
     }
 
-    setPrayData(() => []);
-    setCurrent({ month: currentMonth, year: currentYear });
+    startTransition('prev', currentMonth, currentYear);
   };
 
   const handleEventNextDate = () => {
@@ -90,8 +147,7 @@ export default function ScreenCalendar() {
       currentMonth++;
     }
 
-    setPrayData(() => []);
-    setCurrent(() => ({ month: currentMonth, year: currentYear }));
+    startTransition('next', currentMonth, currentYear);
   };
 
   const onClickDay = (day) => {
@@ -119,13 +175,21 @@ export default function ScreenCalendar() {
     }
   }, [getPrayForUs, current]);
 
+  useEffect(() => {
+    const el = _gridRef.current;
+
+    return () => {
+      if (el) gsap.killTweensOf(el);
+    };
+  }, []);
+
   // RENDER
   return (
     <>
       <div className="screen-calendar">
         <div className='screen-calendar__header'>
           <div className='screen-calendar__info'>
-            <div className='screen-calendar__info-year'>{current?.year || 0}</div>
+            <div className='screen-calendar__info-year'>{displayCurrent?.year || 0}</div>
             <div className='screen-calendar__info-month'>{textMonth}</div>
           </div>
           <div className='screen-calendar__control'>
@@ -143,11 +207,13 @@ export default function ScreenCalendar() {
             </button>
           </div>
         </div>
-        <Calendar
-          {...current}
-          prayData={calendarPrayData}
-          onClickDay={onClickDay}
-        />
+        <div className='screen-calendar__grid' ref={_gridRef}>
+          <Calendar
+            {...displayCurrent}
+            prayData={calendarPrayData}
+            onClickDay={onClickDay}
+          />
+        </div>
       </div>
       <Modal
         isOpen={openModal}
@@ -162,4 +228,3 @@ export default function ScreenCalendar() {
     </>
   );
 }
-

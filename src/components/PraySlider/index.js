@@ -3,15 +3,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // IMAGE
 import Unknown_person_img from "../../assets/images/Unknown_person.jpg";
 
+// UTIL
+import { formatDate } from '../../utils/formatDate';
+
 // STYLE
 import "swiper/css";
 import "./style.css";
-
-// 'YYYY-MM-DD HH:mm:ss' -> 'DD/MM/YYYY'
-const formatDate = (value) => {
-  const [year, month, day] = (value || '').slice(0, 10).split('-');
-  return day ? `${day}/${month}/${year}` : '';
-};
 
 export default function PraySlider(props) {
   // PROPS

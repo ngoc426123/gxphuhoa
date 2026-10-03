@@ -96,10 +96,21 @@ $prayforus_fields = [
   "wpcf-pray-for-us-number",
   "wpcf-pray-for-us-yearofbirth",
   "wpcf-pray-for-us-yearofdead",
+  "wpcf-pray-for-us-saintname",
+  "wpcf-pray-for-us-fullname",
+];
+
+// GỢI Ý TÊN THÁNH: danh sách tên thánh phổ biến ở Việt Nam, dùng cho datalist (free text, không bắt buộc chọn)
+$prayforus_saint_names = [
+  'Maria', 'Giuse', 'Phêrô', 'Phaolô', 'Gioan', 'Gioan Baotixita', 'Anna', 'Antôn',
+  'Đaminh', 'Têrêsa', 'Phanxicô', 'Phanxicô Xaviê', 'Augustinô', 'Vinh Sơn', 'Stêphanô',
+  'Luca', 'Mátta', 'Máccô', 'Simon', 'Giacôbê', 'Bênađô', 'Rosa', 'Cecilia', 'Isave',
+  'Mônica', 'Anê', 'Luxia', 'Catarina', 'Bartôlômêô', 'Tôma', 'Gioakim', 'Micae',
+  'Gabrien', 'Raphae', 'Clara', 'Inhaxiô', 'Giêrônimô', 'Nicôla',
 ];
 
 function formCallBackPrayForUs($post) {
-  global $prayforus_fields;
+  global $prayforus_fields, $prayforus_saint_names;
   $wpcf_value = [];
 
   foreach($prayforus_fields as $value) {
@@ -108,6 +119,46 @@ function formCallBackPrayForUs($post) {
 
   ?>
     <div class="prayforus-box">
+      <div class="prayforus-row">
+        <div class="prayforus-col">
+          <div class="prayforus-form-group">
+            <label class="prayforus-form-label" for="pray-for-us-saintname">Tên thánh</label>
+            <div class="prayforus-form-input">
+              <input
+                id="pray-for-us-saintname"
+                name="wpcf-pray-for-us-saintname"
+                type="text"
+                class="prayforus-form-control"
+                list="prayforus-saintname-list"
+                value="<?php echo esc_attr($wpcf_value["wpcf-pray-for-us-saintname"])?>"
+                autocomplete="off"
+              >
+              <datalist id="prayforus-saintname-list">
+                <?php foreach ($prayforus_saint_names as $saint) : ?>
+                  <option value="<?php echo esc_attr($saint); ?>"></option>
+                <?php endforeach; ?>
+              </datalist>
+              <span class="prayforus-form-note">Gõ để xem gợi ý hoặc nhập tên khác</span>
+            </div>
+          </div>
+        </div>
+        <div class="prayforus-col">
+          <div class="prayforus-form-group">
+            <label class="prayforus-form-label" for="pray-for-us-fullname">Họ tên</label>
+            <div class="prayforus-form-input">
+              <input
+                id="pray-for-us-fullname"
+                name="wpcf-pray-for-us-fullname"
+                type="text"
+                class="prayforus-form-control"
+                value="<?php echo esc_attr($wpcf_value["wpcf-pray-for-us-fullname"])?>"
+                autocomplete="off"
+              >
+              <span class="prayforus-form-note">Họ và tên đầy đủ của người đã khuất</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="prayforus-row">
         <div class="prayforus-col">
           <div class="prayforus-form-group">
@@ -213,6 +264,26 @@ function prayforus_save($post_id) {
   }
 }
 add_action('save_post_pray-for-us', 'prayforus_save');
+
+// SYNC TITLE: tự ghép Post Title = Tên thánh + Họ tên, để API 'name' (= post_title) không cần đổi
+function prayforus_sync_title($post_id) {
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+  if (wp_is_post_revision($post_id)) return;
+  // Quick Edit / bulk edit không gửi 2 field này → bỏ qua, giữ nguyên title cũ
+  if (!isset($_POST['wpcf-pray-for-us-saintname']) && !isset($_POST['wpcf-pray-for-us-fullname'])) return;
+
+  $saintname = sanitize_text_field(wp_unslash($_POST['wpcf-pray-for-us-saintname'] ?? ''));
+  $fullname  = sanitize_text_field(wp_unslash($_POST['wpcf-pray-for-us-fullname'] ?? ''));
+  $newTitle  = trim(preg_replace('/\s+/', ' ', trim($saintname . ' ' . $fullname)));
+
+  if ($newTitle === '') return;
+
+  // Tránh vòng lặp vô hạn: wp_update_post() kích hoạt lại save_post_pray-for-us
+  remove_action('save_post_pray-for-us', 'prayforus_sync_title');
+  wp_update_post(['ID' => $post_id, 'post_title' => $newTitle]);
+  add_action('save_post_pray-for-us', 'prayforus_sync_title');
+}
+add_action('save_post_pray-for-us', 'prayforus_sync_title');
 
 function prayforus_edit($post_id) {
   global $prayforus_fields;
@@ -377,6 +448,12 @@ function prayforus_spa_shortcode() {
   return '<div id="root-pray-for-us"></div>';
 }
 add_shortcode('pray_for_us', 'prayforus_spa_shortcode');
+
+// SPA: shortcode [pray_for_us_today] cho trang chủ - hiển thị người trùng ngày giỗ hôm nay
+function prayforus_spa_shortcode_today() {
+  return '<div id="root-pray-for-us-today"></div>';
+}
+add_shortcode('pray_for_us_today', 'prayforus_spa_shortcode_today');
 
 // FUNCTION
 function get_prayforus_image($postID){

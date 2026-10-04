@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // IMAGE
 import Unknown_person_img from "../../assets/images/Unknown_person.jpg";
@@ -10,6 +10,9 @@ import { formatDate } from '../../utils/formatDate';
 import "./style.css";
 
 export default function ScreenToday() {
+  const _grid = useRef(null);
+  const _drag = useRef({ active: false, moved: false, x: 0, left: 0 });
+
   // STATE
   const [prayData, setPrayData] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +38,32 @@ export default function ScreenToday() {
     }
   }, []);
 
+  // Giữ chuột kéo ngang danh sách (cảm ứng đã tự cuộn được nên chỉ xử lý chuột)
+  const onMouseDownGrid = (event) => {
+    if (event.button !== 0) return;
+
+    _drag.current = { active: true, moved: false, x: event.pageX, left: _grid.current.scrollLeft };
+  };
+
+  const onMouseMoveGrid = (event) => {
+    const drag = _drag.current;
+
+    if (!drag.active) return;
+
+    const dx = event.pageX - drag.x;
+
+    if (Math.abs(dx) > 5 && !drag.moved) {
+      drag.moved = true;
+      _grid.current.classList.add('--dragging');
+    }
+    if (drag.moved) _grid.current.scrollLeft = drag.left - dx;
+  };
+
+  const onMouseUpGrid = () => {
+    _drag.current.active = false;
+    _grid.current.classList.remove('--dragging');
+  };
+
   // SIDE EFFECT
   useEffect(() => {
     getPrayForUs();
@@ -59,7 +88,15 @@ export default function ScreenToday() {
 
   return (
     <div className='screen-today'>
-      <div className='screen-today__grid'>
+      <div
+        className='screen-today__grid'
+        ref={_grid}
+        onMouseDown={onMouseDownGrid}
+        onMouseMove={onMouseMoveGrid}
+        onMouseUp={onMouseUpGrid}
+        onMouseLeave={onMouseUpGrid}
+        onDragStart={(event) => event.preventDefault()}
+      >
         {prayData.map(item => (
           <div key={item.positionID} className='screen-today__card'>
             <div className='screen-today__image'>

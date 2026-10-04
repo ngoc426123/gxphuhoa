@@ -25,6 +25,7 @@ export default function ScreenCalendar() {
   const [displayCurrent, setDisplayCurrent] = useState(current);
   const [prayData, setPrayData] = useState([]);
   const [praySliderData, setPraySliderData] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const textMonth = useMemo(() => {
     return months[displayCurrent.month - 1];
@@ -150,18 +151,20 @@ export default function ScreenCalendar() {
     startTransition('next', currentMonth, currentYear);
   };
 
-  const onClickDay = (day) => {
+  const onClickDay = (day, month) => {
     setPraySliderData(() => {
       const { data } = calendarPrayData.filter(item => item.day === day)[0];
 
       return data;
     });
+    setSelectedDate({ day, month, year: displayCurrent.year });
     setOpenModal(true);
   };
 
   const handleEventClosePopup = () => {
     setOpenModal(false);
-    setPraySliderData([])
+    setPraySliderData([]);
+    setSelectedDate(null);
   };
 
   // SIDE EFFECT
@@ -223,7 +226,7 @@ export default function ScreenCalendar() {
         <button className='houdini-modal-close' onClick={handleEventClosePopup}>
           <img src={Close_icon} alt=''/>
         </button>
-        <PraySlider data={praySliderData} />
+        <PraySlider data={praySliderData} date={selectedDate} />
       </Modal>
     </>
   );

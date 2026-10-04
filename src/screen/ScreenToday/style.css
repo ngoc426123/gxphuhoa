@@ -3,14 +3,40 @@
 }
 
 .screen-today__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  justify-content: safe center;
+  align-items: stretch;
   gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 10px 15px 16px;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pfu-gold) var(--pfu-gold-soft);
+}
+
+.screen-today__grid.--dragging {
+  cursor: grabbing;
+}
+
+.screen-today__grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.screen-today__grid::-webkit-scrollbar-track {
+  background: var(--pfu-gold-soft);
+  border-radius: 8px;
+}
+
+.screen-today__grid::-webkit-scrollbar-thumb {
+  background: var(--pfu-gold);
+  border-radius: 8px;
 }
 
 .screen-today__card {
+  flex: 0 1 20%;
+  min-width: 180px;
   padding: 14px 14px 18px;
   background: var(--pfu-surface);
   border: solid 1px var(--pfu-line);

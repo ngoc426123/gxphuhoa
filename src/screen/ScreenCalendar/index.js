@@ -199,12 +199,14 @@ export default function ScreenCalendar() {
             <button
               className='screen-calendar__control-cta --left'
               onClick={handleEventPreDate}
+              aria-label='Tháng trước'
             >
               <img src={Left_icon} alt=''/>
             </button>
             <button
               className='screen-calendar__control-cta --right'
               onClick={handleEventNextDate}
+              aria-label='Tháng sau'
             >
               <img src={Left_icon} alt=''/>
             </button>

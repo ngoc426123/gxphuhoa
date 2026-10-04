@@ -2,9 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 
 import { weekdays } from "../../constants/date";
-
-// IMAGE
-import Unknown_person_img from "../../assets/images/Unknown_person.jpg";
+import CandleIcon from "../CandleIcon";
 
 // STYLE
 import "./style.css";
@@ -67,13 +65,12 @@ export default function Calendar(props) {
 
     const ctx = gsap.context(() => {
       gsap.fromTo(cells,
-        { autoAlpha: 0, y: 18, scale: 0.92 },
+        { autoAlpha: 0, y: 12 },
         {
           autoAlpha: 1,
           y: 0,
-          scale: 1,
-          duration: 0.5,
-          ease: 'power2.out',
+          duration: 0.6,
+          ease: 'power1.out',
           stagger: (i, target) => {
             const row = Math.floor(Number(target.dataset.index) / COLS);
 
@@ -107,12 +104,12 @@ export default function Calendar(props) {
           >
             <span className="calendar__day-name">{day?.day || ''}</span>
             {day.data && (
-              <div className="calendar__peace-list">
-                {day.data.map(item => (
-                  <div key={item.positionID} className="calendar__peace-item">
-                    <img src={item.img || Unknown_person_img} alt=""/>
-                  </div>
-                ))}
+              <div
+                className="calendar__pray-badge"
+                aria-label={`${day.data.length} linh hồn được cầu nguyện ngày ${day.day}`}
+              >
+                <CandleIcon width={12} height={16} className="calendar__pray-flame" />
+                <span className="calendar__pray-count">{day.data.length}</span>
               </div>
             )}
           </div>

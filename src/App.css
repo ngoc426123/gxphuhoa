@@ -2,17 +2,30 @@
 
 /* Prefix --pfu- để không đụng biến của theme; khai báo ở :root vì Modal render ra ngoài #root */
 :root {
-  --pfu-bg: #FBF7EF;
+  --pfu-bg: #F5F1E6;
   --pfu-surface: #FFFDF8;
-  --pfu-ink: #2B2A33;
-  --pfu-muted: #7A7266;
-  --pfu-line: #E8DEC9;
-  --pfu-gold: #B8893B;
-  --pfu-gold-soft: #F3E6C6;
-  --pfu-glow: rgba(232, 180, 80, 0.45);
-  --pfu-night: #1E2340;
-  --pfu-night-2: #2E3561;
+  --pfu-ink: #24222C;
+  --pfu-muted: #6B6458;
+  --pfu-line: #E3D9C4;
+  --pfu-gold: #9C7A3C;
+  --pfu-gold-soft: #EEE4CC;
+  --pfu-glow: rgba(156, 122, 60, 0.3);
+  --pfu-night: #181C30;
+  --pfu-night-2: #242A4D;
   --pfu-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --pfu-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Dành riêng cho biểu tượng ngọn nến — không dùng cho trang trí khác */
+  --pfu-flame: #C98A33;
+  --pfu-flame-glow: rgba(201, 138, 51, 0.45);
+}
+
+/* Tháng Mười Một — Tháng Các Linh Hồn: cùng bảng màu, chỉ đẩy đậm sắc độ */
+body.pfu-theme-souls-month {
+  --pfu-bg: #F0E9D8;
+  --pfu-gold: #B3802E;
+  --pfu-glow: rgba(179, 128, 46, 0.5);
+  --pfu-flame-glow: rgba(179, 128, 46, 0.6);
+  --pfu-night: #12162A;
 }
 
 .App-pray-for-us {
@@ -28,8 +41,18 @@
 }
 
 .App-info {
-  margin-bottom: 50px;
+  margin-bottom: 64px;
   text-align: center;
+}
+
+.souls-month-banner {
+  margin-bottom: 10px;
+  font-family: var(--pfu-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pfu-gold);
 }
 
 .App-sub-title {
@@ -58,19 +81,34 @@
   justify-content: center;
   gap: 14px;
   margin-bottom: 14px;
-  color: var(--pfu-gold);
+  color: var(--pfu-flame);
 }
 
 .App-ornament::before,
 .App-ornament::after {
   content: '';
-  width: 80px;
+  width: 56px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--pfu-gold));
+  background: linear-gradient(90deg, transparent, var(--pfu-line));
 }
 
 .App-ornament::after {
   transform: scaleX(-1);
+}
+
+/* Hàng 3 ngọn nến nhỏ — chỉ hiện trong Tháng Các Linh Hồn */
+.App-ornament-candles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 14px;
+  color: var(--pfu-flame);
+}
+
+.App-ornament-candles svg:nth-child(2) {
+  opacity: 0.85;
+  transform: scale(0.85);
 }
 
 .App-desc {
@@ -157,7 +195,7 @@
   outline: none;
   position: relative;
   border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
   overflow: hidden;
 }
 

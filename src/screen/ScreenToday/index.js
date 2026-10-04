@@ -1,21 +1,26 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 // IMAGE
 import Unknown_person_img from "../../assets/images/Unknown_person.jpg";
 
+// COMPONENT
+import CandleIcon from '../../components/CandleIcon';
+
 // UTIL
 import { formatDate } from '../../utils/formatDate';
+import useDragScroll from '../../hooks/useDragScroll';
 
 // STYLE
 import "./style.css";
 
-export default function ScreenToday() {
-  const _grid = useRef(null);
-  const _drag = useRef({ active: false, moved: false, x: 0, left: 0 });
+export default function ScreenToday(props) {
+  const { isSoulsMonth } = props;
 
   // STATE
   const [prayData, setPrayData] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
+  const { trackRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll();
 
   // METHOD
   const getPrayForUs = useCallback(async () => {
@@ -38,32 +43,6 @@ export default function ScreenToday() {
     }
   }, []);
 
-  // Giữ chuột kéo ngang danh sách (cảm ứng đã tự cuộn được nên chỉ xử lý chuột)
-  const onMouseDownGrid = (event) => {
-    if (event.button !== 0) return;
-
-    _drag.current = { active: true, moved: false, x: event.pageX, left: _grid.current.scrollLeft };
-  };
-
-  const onMouseMoveGrid = (event) => {
-    const drag = _drag.current;
-
-    if (!drag.active) return;
-
-    const dx = event.pageX - drag.x;
-
-    if (Math.abs(dx) > 5 && !drag.moved) {
-      drag.moved = true;
-      _grid.current.classList.add('--dragging');
-    }
-    if (drag.moved) _grid.current.scrollLeft = drag.left - dx;
-  };
-
-  const onMouseUpGrid = () => {
-    _drag.current.active = false;
-    _grid.current.classList.remove('--dragging');
-  };
-
   // SIDE EFFECT
   useEffect(() => {
     getPrayForUs();
@@ -76,12 +55,15 @@ export default function ScreenToday() {
     return (
       <div className='screen-today__empty'>
         <div className='App-ornament' aria-hidden='true'>
-          <svg viewBox='0 0 20 28' width='14' height='20'>
-            <path d='M8 0h4v8h8v4h-8v16H8V12H0V8h8z' fill='currentColor'/>
-          </svg>
+          <CandleIcon />
         </div>
         <div className='screen-today__empty-line1'>Không có ngày giỗ nào của người đã mất trong xứ</div>
-        <div className='screen-today__empty-line2'>Xin mọi người cầu nguyện cho các linh hồn</div>
+        <div className='screen-today__empty-line2'>Xin hiệp thông cầu nguyện cho các linh hồn.</div>
+        {isSoulsMonth && (
+          <div className='screen-today__empty-line3'>
+            Tháng Các Linh Hồn: xin dâng lời cầu cho mọi linh hồn đã an nghỉ trong Chúa.
+          </div>
+        )}
       </div>
     );
   }
@@ -90,11 +72,11 @@ export default function ScreenToday() {
     <div className='screen-today'>
       <div
         className='screen-today__grid'
-        ref={_grid}
-        onMouseDown={onMouseDownGrid}
-        onMouseMove={onMouseMoveGrid}
-        onMouseUp={onMouseUpGrid}
-        onMouseLeave={onMouseUpGrid}
+        ref={trackRef}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
         onDragStart={(event) => event.preventDefault()}
       >
         {prayData.map(item => (
@@ -104,11 +86,12 @@ export default function ScreenToday() {
             </div>
             <div className='screen-today__info'>
               <div className='screen-today__name'>{item.name || 'Chưa có tên'}</div>
-              <div className='screen-today__year-of-dead'>Ngày mất: {formatDate(item.yearOfDead) || 'Chưa thông tin'}</div>
+              <div className='screen-today__year-of-dead'>An nghỉ ngày: {formatDate(item.yearOfDead) || 'Chưa thông tin'}</div>
               <div className='screen-today__position-info'>
-                <div className='screen-today__position-item'>Số kệ: {item.shelf || 'Chưa thông tin'}</div>
-                <div className='screen-today__position-item'>Số hàng: {item.row || 'Chưa thông tin'}</div>
-                <div className='screen-today__position-item'>Vị trí: {item.number || 'Chưa thông tin'}</div>
+                <div className='screen-today__position-label'>Vị trí lưu tro cốt</div>
+                <div className='screen-today__position-value'>
+                  Kệ {item.shelf || '—'} · Hàng {item.row || '—'} · Vị trí {item.number || '—'}
+                </div>
               </div>
             </div>
           </div>

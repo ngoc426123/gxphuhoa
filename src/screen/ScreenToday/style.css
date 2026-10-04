@@ -37,17 +37,19 @@
 .screen-today__card {
   flex: 0 1 20%;
   min-width: 180px;
-  padding: 14px 14px 18px;
+  padding: 20px 16px 18px;
   background: var(--pfu-surface);
   border: solid 1px var(--pfu-line);
-  border-radius: 110px 110px 12px 12px / 60px 60px 12px 12px;
-  box-shadow: 0 10px 30px rgba(30, 35, 64, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(20, 20, 30, 0.06);
 }
 
 .screen-today__image {
-  margin-bottom: 16px;
-  border-radius: 100px 100px 6px 6px / 54px 54px 6px 6px;
+  width: 76px;
+  margin: 0 auto 16px;
+  border-radius: 100%;
   overflow: hidden;
+  box-shadow: 0 0 0 3px var(--pfu-gold-soft);
 }
 
 .screen-today__image img {
@@ -78,16 +80,24 @@
 }
 
 .screen-today__position-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-top: 8px;
+  padding-top: 10px;
+  margin-top: 4px;
   border-top: solid 1px var(--pfu-line);
 }
 
-.screen-today__position-item {
-  margin: 0 5px;
+.screen-today__position-label {
+  margin-bottom: 2px;
+  font-family: var(--pfu-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pfu-muted);
+  opacity: 0.65;
+}
+
+.screen-today__position-value {
+  font-family: var(--pfu-sans);
   font-size: 12px;
   color: var(--pfu-muted);
 }
@@ -116,6 +126,15 @@
   line-height: 26px;
   font-style: italic;
   color: var(--pfu-muted);
+}
+
+.screen-today__empty-line3 {
+  max-width: 420px;
+  margin-top: 4px;
+  font-family: var(--pfu-sans);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--pfu-gold);
 }
 
 @media only screen and (max-width: 540px) {

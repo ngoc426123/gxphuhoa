@@ -35,7 +35,7 @@ export default function PraySlider(props) {
         onDragStart={(event) => event.preventDefault()}
       >
         {data && data.map(item => (
-          <div key={item.positionID} className='pray-slider__item'>
+          <div key={item.ID} className='pray-slider__item'>
             <div className='pray-slider__image'>
               <img src={item.img || Unknown_person_img} alt=''/>
             </div>

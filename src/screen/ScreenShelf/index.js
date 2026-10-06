@@ -73,8 +73,8 @@ export default function ScreenShelf() {
     }
   }
 
-  const onClickPray = (positionID) => {
-    setPraySliderData(() => prayData.filter(item => item.positionID === positionID));
+  const onClickPray = (ID) => {
+    setPraySliderData(() => prayData.filter(item => item.ID === ID));
     setOpenModal(true);
   }
 
@@ -202,7 +202,7 @@ export default function ScreenShelf() {
                         {...(findPray ? { title: findPray.name } : {})}
                         data-position={`${rowIndex + 1}|${numberIndex + 1}`}
                         {...(findPray 
-                          ? { onClick: () => onClickPray(findPray.positionID) } 
+                          ? { onClick: () => onClickPray(findPray.ID) } 
                           : {})
                         }
                       >

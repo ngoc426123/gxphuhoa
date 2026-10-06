@@ -80,7 +80,7 @@ export default function ScreenToday(props) {
         onDragStart={(event) => event.preventDefault()}
       >
         {prayData.map(item => (
-          <div key={item.positionID} className='screen-today__card'>
+          <div key={item.ID} className='screen-today__card'>
             <div className='screen-today__image'>
               <img src={item.img || Unknown_person_img} alt=''/>
             </div>

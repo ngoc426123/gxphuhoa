@@ -32,6 +32,8 @@ export default function ScreenCalendar() {
   }, [displayCurrent.month]);
   const calendarPrayData = useMemo(() => {
     return prayData
+      // Bỏ qua người chưa có ngày mất (để trống) hoặc ngày không hợp lệ
+      .filter(item => /^\d{4}-\d{2}-\d{2}/.test(item.yearOfDead || ''))
       .reduce((cum, cur) => {
         const date = new Date(cur.yearOfDead.replace(' ', 'T')); // 'YYYY-MM-DD HH:mm:ss' có dấu cách → Safari trả Invalid Date
         const day = date.getDate();

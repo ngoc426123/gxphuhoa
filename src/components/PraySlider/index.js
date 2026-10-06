@@ -42,12 +42,14 @@ export default function PraySlider(props) {
             <div className='pray-slider__info'>
               <div className='pray-slider__name'>{item.name || 'Chưa có tên'}</div>
               <div className='pray-slider__year-of-dead'>An nghỉ ngày: {formatDate(item.yearOfDead) || 'Chưa thông tin'}</div>
+              {/* Tạm ẩn vị trí lưu tro cốt (Kệ/Hàng/Thứ tự), dữ liệu vẫn giữ trong admin & API
               <div className='pray-slider__position-info'>
                 <div className='pray-slider__position-label'>Vị trí lưu tro cốt</div>
                 <div className='pray-slider__position-value'>
                   Kệ {item.shelf || '—'} · Hàng {item.row || '—'} · Vị trí {item.number || '—'}
                 </div>
               </div>
+              */}
             </div>
           </div>
         ))}

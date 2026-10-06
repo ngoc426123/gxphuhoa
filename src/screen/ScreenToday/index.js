@@ -87,12 +87,14 @@ export default function ScreenToday(props) {
             <div className='screen-today__info'>
               <div className='screen-today__name'>{item.name || 'Chưa có tên'}</div>
               <div className='screen-today__year-of-dead'>An nghỉ ngày: {formatDate(item.yearOfDead) || 'Chưa thông tin'}</div>
+              {/* Tạm ẩn vị trí lưu tro cốt (Kệ/Hàng/Thứ tự), dữ liệu vẫn giữ trong admin & API
               <div className='screen-today__position-info'>
                 <div className='screen-today__position-label'>Vị trí lưu tro cốt</div>
                 <div className='screen-today__position-value'>
                   Kệ {item.shelf || '—'} · Hàng {item.row || '—'} · Vị trí {item.number || '—'}
                 </div>
               </div>
+              */}
             </div>
           </div>
         ))}

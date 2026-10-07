@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import gsap from "gsap";
+import { useMemo, useState } from "react";
 
 import { weekdays } from "../../constants/date";
 import CandleIcon from "../CandleIcon";
@@ -7,24 +6,24 @@ import CandleIcon from "../CandleIcon";
 // STYLE
 import "./style.css";
 
-const COLS = 7; // số cột trên desktop (flex-basis 14.285714% ~ 7 cột/hàng)
+const COLS = 7; // 7 ngày/tuần, lưới bắt đầu từ Chúa Nhật
 
 export default function Calendar(props) {
   // PROPS
   const { month, year, prayData, onClickDay } = props;
 
-  // REF
-  const _daysRef = useRef(null);
-
   // STATE
   const [weekday] = useState(weekdays);
+  const today = useMemo(() => new Date(), []);
   const listdayData = useMemo(() => {
     let findFirstDay = false;
     let countDay = 0;
     const countDate = new Date(year, month, 0).getDate(); // số ngày thực của tháng hiện tại (new Date(year, month, 0) = ngày cuối của tháng `month`, vì Date dùng tháng 0-index)
     const firstDay = new Date(year, month - 1, 1).getDay();
 
-    return Array.from(Array(35).keys()).map(item => {
+    const cellCount = Math.ceil((firstDay + countDate) / COLS) * COLS; // 5 hoặc 6 hàng, tháng bắt đầu T6/T7 cần 6 hàng
+
+    return Array.from(Array(cellCount).keys()).map(item => {
       if (!findFirstDay) {
         if (item === firstDay) {
           findFirstDay = true;
@@ -49,40 +48,6 @@ export default function Calendar(props) {
     });
   }, [listdayData, prayData]);
 
-  // SIDE EFFECT
-  // Avatar hiện lần lượt từ hàng dưới cùng lên hàng trên cùng mỗi khi có data mới (load lần đầu hoặc đổi tháng)
-  useEffect(() => {
-    const container = _daysRef.current;
-
-    if (!container) return;
-
-    const cells = container.querySelectorAll('.calendar__day.--need-pray');
-
-    if (!cells.length) return;
-
-    const rows = Array.from(cells).map(cell => Math.floor(Number(cell.dataset.index) / COLS));
-    const maxRow = Math.max(...rows);
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(cells,
-        { autoAlpha: 0, y: 12 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power1.out',
-          stagger: (i, target) => {
-            const row = Math.floor(Number(target.dataset.index) / COLS);
-
-            return (maxRow - row) * 0.12;
-          },
-        }
-      );
-    }, container);
-
-    return () => ctx.revert();
-  }, [onTopData]);
-
   // RENDER
   return (
     <div className="calendar">
@@ -91,29 +56,47 @@ export default function Calendar(props) {
           <div key={index} className="calendar__weekday-day">{wDay}</div>
         ))}
       </div>
-      <div className="calendar__days" ref={_daysRef}>
-        {onTopData && onTopData.map((day, index) => (
+      <div className="calendar__days">
+        {onTopData && onTopData.map((day, index) => {
+          const isToday = day.day === today.getDate() && month === today.getMonth() + 1 && year === today.getFullYear();
+
+          return (
           <div
             key={index}
-            data-index={index}
-            className={`calendar__day ${day.data ? '--need-pray' : ''} ${!day.day ? '--blank' : ''}`}
+            className={`calendar__day ${day.data ? '--need-pray' : ''} ${!day.day ? '--blank' : ''} ${isToday ? '--today' : ''}`}
+            {...(isToday ? { 'aria-current': 'date' } : {})}
             {...(day.data
-              ? { onClick: () => onClickDay(day.day, month) }
+              ? {
+                // Cho phép mở bằng bàn phím: Tab tới ô, Enter / Space để mở
+                role: 'button',
+                tabIndex: 0,
+                'aria-label': `Ngày ${day.day}: ${day.data.length} linh hồn được cầu nguyện`,
+                onClick: () => onClickDay(day.day, month),
+                onKeyDown: (event) => {
+                  if (event.key !== 'Enter' && event.key !== ' ') return;
+
+                  event.preventDefault();
+                  onClickDay(day.day, month);
+                },
+              }
               : {})
             }
           >
-            <span className="calendar__day-name">{day?.day || ''}</span>
+            <span className="calendar__day-name">
+              {day?.day || ''}
+              {/* Thứ trong tuần: chỉ hiện trên mobile (hàng tiêu đề thứ bị ẩn) */}
+              {day.day && <span className="calendar__day-weekday"> · {weekday[index % COLS]}</span>}
+            </span>
+            {isToday && <span className="calendar__today-label">Hôm nay</span>}
             {day.data && (
-              <div
-                className="calendar__pray-badge"
-                aria-label={`${day.data.length} linh hồn được cầu nguyện ngày ${day.day}`}
-              >
+              <div className="calendar__pray-badge" aria-hidden="true">
                 <CandleIcon width={12} height={16} className="calendar__pray-flame" />
                 <span className="calendar__pray-count">{day.data.length}</span>
               </div>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   )

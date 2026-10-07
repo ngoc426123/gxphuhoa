@@ -120,6 +120,37 @@ body.pfu-theme-souls-month {
   color: var(--pfu-muted);
 }
 
+/* Tháng 11 (Tháng Các Linh Hồn): nền tím kem nhẹ */
+.App-info--souls {
+  margin-bottom: 0;
+}
+
+.App-pray-for-us--today.--souls {
+  background:
+    radial-gradient(ellipse 60% 320px at 50% 0, rgba(236, 226, 242, 0.95), transparent 70%),
+    #F3EEF4;
+}
+
+.App-section-title {
+  margin-bottom: 10px;
+  font-family: var(--pfu-serif);
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pfu-night);
+}
+
+.App-section-sub {
+  font-family: var(--pfu-serif);
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--pfu-gold);
+}
+
 .App-control-view {
   display: inline-flex;
   align-items: center;
@@ -247,5 +278,15 @@ body.pfu-theme-souls-month {
   .App-title {
     font-size: 30px;
     line-height: 38px;
+  }
+
+  .App-section-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .App-section-sub {
+    font-size: 18px;
+    line-height: 26px;
   }
 }

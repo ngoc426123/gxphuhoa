@@ -449,9 +449,12 @@ function prayforus_spa_shortcode() {
 }
 add_shortcode('pray_for_us', 'prayforus_spa_shortcode');
 
-// SPA: shortcode [pray_for_us_today] cho trang chủ - hiển thị người trùng ngày giỗ hôm nay
-function prayforus_spa_shortcode_today() {
-  return '<div id="root-pray-for-us-today"></div>';
+// SPA: shortcode [pray_for_us_today link="/trang-lich"] cho trang chủ - hiển thị người trùng ngày giỗ hôm nay
+// link (tuỳ chọn): trang có [pray_for_us], hiện link khi hôm nay không có ngày giỗ
+function prayforus_spa_shortcode_today($atts) {
+  $atts = shortcode_atts(array('link' => ''), $atts, 'pray_for_us_today');
+
+  return '<div id="root-pray-for-us-today" data-link="' . esc_url($atts['link']) . '"></div>';
 }
 add_shortcode('pray_for_us_today', 'prayforus_spa_shortcode_today');
 

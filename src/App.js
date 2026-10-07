@@ -15,7 +15,7 @@ function App() {
         {isSoulsMonth && (
           <div className='souls-month-banner'>Tháng Mười Một — Tháng Các Linh Hồn</div>
         )}
-        <div className='App-sub-title'>Giáo Xứ Phú Hoà</div>
+        <div className='App-sub-title'>Giáo Xứ Phú Hòa</div>
         <div className='App-title'>Nhà chờ phục sinh</div>
         {isSoulsMonth ? (
           <div className='App-ornament-candles' aria-hidden='true'>

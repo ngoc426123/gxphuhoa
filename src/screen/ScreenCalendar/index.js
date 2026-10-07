@@ -114,11 +114,15 @@ export default function ScreenCalendar() {
         method: 'GET'
       }
       const response = await fetch(apiUrl, options);
+
+      if (!response.ok) throw new Error('API lỗi: ' + response.status);
+
       const data = await response.json();
 
-      setPrayData(data);
+      setPrayData(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error(error);
+      setPrayData([]);
     } finally {
       _transition.current.dataReady = true;
       tryCommit();
@@ -224,10 +228,12 @@ export default function ScreenCalendar() {
       </div>
       <Modal
         isOpen={openModal}
+        onRequestClose={handleEventClosePopup}
+        contentLabel='Danh sách linh hồn được cầu nguyện'
         className='houdini-modal'
         overlayClassName='houdini-modal-overlay'
       >
-        <button className='houdini-modal-close' onClick={handleEventClosePopup}>
+        <button className='houdini-modal-close' onClick={handleEventClosePopup} aria-label='Đóng'>
           <img src={Close_icon} alt=''/>
         </button>
         <PraySlider data={praySliderData} date={selectedDate} />

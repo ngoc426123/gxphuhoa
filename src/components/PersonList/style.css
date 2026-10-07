@@ -1,0 +1,97 @@
+.person-list {
+  width: 100%;
+}
+
+.person-list__track {
+  display: flex;
+  justify-content: safe center;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+  padding: 10px 15px 16px;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pfu-gold) var(--pfu-gold-soft);
+}
+
+.person-list__track.--dragging {
+  cursor: grabbing;
+}
+
+.person-list__track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.person-list__track::-webkit-scrollbar-track {
+  background: var(--pfu-gold-soft);
+  border-radius: 8px;
+}
+
+.person-list__track::-webkit-scrollbar-thumb {
+  background: var(--pfu-gold);
+  border-radius: 8px;
+}
+
+.person-list__card {
+  flex: 0 1 20%;
+  min-width: 180px;
+  padding: 20px 16px 18px;
+  background: var(--pfu-surface);
+  border: solid 1px var(--pfu-line);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(20, 20, 30, 0.06);
+}
+
+.person-list__image {
+  width: 76px;
+  margin: 0 auto 16px;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px var(--pfu-gold-soft);
+}
+
+.person-list__image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.person-list__info {
+  text-align: center;
+}
+
+.person-list__name {
+  margin-bottom: 4px;
+  font-family: var(--pfu-serif);
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--pfu-night);
+}
+
+.person-list__year-of-dead {
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--pfu-gold);
+}
+
+.person-list__position {
+  padding-top: 10px;
+  margin-top: 4px;
+  border-top: solid 1px var(--pfu-line);
+  font-family: var(--pfu-sans);
+  font-size: 12px;
+  color: var(--pfu-muted);
+}
+
+.person-list__text-swipe {
+  font-size: 12px;
+  line-height: 20px;
+  font-style: italic;
+  text-align: center;
+  color: var(--pfu-muted);
+}

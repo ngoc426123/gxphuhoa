@@ -61,6 +61,32 @@
   color: var(--pfu-gold);
 }
 
+.calendar__day[role='button']:focus-visible {
+  outline: 2px solid var(--pfu-gold);
+  outline-offset: -3px;
+}
+
+/* Ngày hôm nay: nét vàng mảnh trên đầu ô + chữ nghiêng nhỏ, giữ trang nghiêm, không nổi hơn bảng */
+.calendar__day.--today {
+  box-shadow: inset 0 2px 0 var(--pfu-gold);
+}
+
+.calendar__day.--today .calendar__day-name {
+  color: var(--pfu-night);
+}
+
+.calendar__today-label {
+  position: absolute;
+  top: 22px;
+  left: 18px;
+  font-family: var(--pfu-serif);
+  font-size: 15px;
+  line-height: 20px;
+  font-style: italic;
+  color: var(--pfu-gold);
+  pointer-events: none;
+}
+
 .calendar__day:hover .calendar__day-name {
   font-weight: bold;
 }
@@ -80,6 +106,10 @@
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.calendar__day-weekday {
+  display: none;
 }
 
 .calendar__pray-badge {
@@ -124,14 +154,24 @@
     left: 20px;
   }
 
+  /* Ô hẹp: đưa nhãn xuống góc dưới phải để không đè lên "số · thứ" (huy hiệu nến nằm góc dưới trái) */
+  .calendar__today-label {
+    top: auto;
+    bottom: 14px;
+    left: auto;
+    right: 20px;
+  }
+
+  .calendar__day-weekday {
+    display: inline;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--pfu-muted);
+  }
+
   .calendar__pray-badge {
     right: auto;
     left: 20px;
-  }
-}
-
-@media only screen and (max-width: 540px) {
-  .calendar__day {
-    flex-basis: 100%;
   }
 }
